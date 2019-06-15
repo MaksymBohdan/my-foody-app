@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
+import HeadComponent from './components/header/HeadComponent';
+import MainComponent from './components/main/MainComponent';
+import AuthComponent from './components/authentication/AuthComponent';
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  state = {};
+
+  render() {
+    return (
+      <Fragment>
+        <HeadComponent />
+        <MainComponent />
+        <AuthComponent />
+      </Fragment>
+    );
+  }
 }
-
 export default App;
