@@ -33,3 +33,14 @@ th {
   background-color: #4caf50;
   color: white;
 }
+
+/* /////////////////// */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
