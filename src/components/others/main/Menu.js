@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import menu from '../../json/menu.json';
+// import menu from '../../json/menu.json';
 import MenuList from './MenuList';
 import MenuFilter from './MenuFilter';
 
@@ -11,7 +11,7 @@ class Menu extends Component {
 
   componentDidMount() {
     this.setState({
-      itemsArr: menu,
+      // itemsArr: [menu],
     });
   }
 
