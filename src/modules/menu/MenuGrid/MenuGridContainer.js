@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import MenuGrid from './MenuGrid';
+import MenuGrid from './MenuGridView';
+import Loader from '../../../components/Loader/Loader';
 import * as API from '../../../services/api';
 
 export default class MenuGridContainer extends Component {
@@ -21,8 +22,8 @@ export default class MenuGridContainer extends Component {
     const { menu, loading, error } = this.state;
     return (
       <React.Fragment>
-        {loading && <h1>loading</h1>}
-        {error && <h1>Error</h1>}
+        {loading && <Loader />}
+        {error && <h2>Error</h2>}
         <MenuGrid items={menu} />
       </React.Fragment>
     );
