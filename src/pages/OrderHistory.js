@@ -1,11 +1,11 @@
 import React from 'react';
 
-const OrderHistoryPage = () => {
-  return (
-    <div>
-      <h2>Order History Page</h2>
-    </div>
-  );
-};
+import OrderHistoryContainer from '../modules/order-history/OrderHistoryGrid/OrderHistoryGridContainer';
+
+const OrderHistoryPage = () => (
+  <React.Fragment>
+    <OrderHistoryContainer />
+  </React.Fragment>
+);
 
 export default OrderHistoryPage;

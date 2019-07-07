@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
 // import menu from '../../json/menu.json';
-import MenuList from './MenuList';
 import MenuFilter from './MenuFilter';
 
 class Menu extends Component {
   state = {
-    itemsArr: [],
+    // itemsArr: [],
     inputValue: '',
   };
 
@@ -28,13 +27,13 @@ class Menu extends Component {
   };
 
   render() {
-    const { inputValue, itemsArr } = this.state;
-    const filteredItems = this.handleFilterItems(inputValue, itemsArr);
+    const { inputValue } = this.state;
+    // const filteredItems = this.handleFilterItems(inputValue, itemsArr);
 
     return (
       <Fragment>
         <MenuFilter inputValue={inputValue} handleFilter={this.handleFilter} />
-        <MenuList filteredItems={filteredItems} />
+        {/* <MenuList filteredItems={filteredItems} /> */}
       </Fragment>
     );
   }

@@ -10,10 +10,8 @@ import DeliveryPage from '../pages/Delivery';
 import AccountPage from '../pages/Account';
 import OrderHistoryPage from '../pages/OrderHistory';
 import PlannerPage from '../pages/Planner';
-
 // import MainComponent from './main/MainComponent';
 // import AuthComponent from './authentication/AuthComponent';
-// import Modal from './header/Modal';
 
 import routes from '../configs/routes';
 
@@ -38,19 +36,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
-// isModalOpen: false
-
-// openModal = () => {
-//   this.setState({ isModalOpen: true });
-// };
-
-// closeModal = () => {};
-// const { isModalOpen } = this.state;
-/* <button type="button" onClick={this.openModal}>
-Open Modal
-</button>
-{isModalOpen && <Modal onClose={() => null} />}
-<MenuPage />
-<MainComponent />
-<AuthComponent /> */

@@ -13,8 +13,6 @@ class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log(this.state);
     this.handleReset();
   };
 

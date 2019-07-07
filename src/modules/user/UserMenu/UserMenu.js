@@ -25,11 +25,15 @@ class UserMenu extends Component {
 
   handleWindowClick = e => {
     const { isDropdownOpen } = this.state;
+    const isTargetTypeOfLink = e.target.tagName.toLowerCase() === 'a';
     const isTargetInsideContainer = this.containerRef.current.contains(
       e.target,
     );
 
-    if (isDropdownOpen && !isTargetInsideContainer) {
+    if (
+      (isDropdownOpen && !isTargetInsideContainer) ||
+      (isDropdownOpen && isTargetTypeOfLink)
+    ) {
       this.closeDropdown();
     }
   };
