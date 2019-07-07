@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import OrderHistoryView from './OrderHistoryGridView';
 import Loader from '../../../components/Loader/Loader';
-import OrderHistoryItemView from '../OrderHstoryItem/OrderHistoryItemView';
+import OrderHistoryItemView from '../OrderHistoryItem/OrderHistoryItemView';
 import OrderHistoryForm from '../OrderHistoryForm/OrderHistoryForm';
 
 import * as API from '../../../services/orderHistoryService';
