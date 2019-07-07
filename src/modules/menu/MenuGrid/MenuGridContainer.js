@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
-import * as API from '../../../services/api';
+import * as API from '../../../services/menuService';
 
 export default class MenuGridContainer extends Component {
-  state = { menu: [], loading: false, error: null };
+  state = {
+    menu: [],
+    loading: false,
+    error: null,
+  };
 
   async componentDidMount() {
     this.setState({ loading: true });
@@ -29,13 +33,3 @@ export default class MenuGridContainer extends Component {
     );
   }
 }
-
-// handleShowMoreInfo = id => {
-//   API.getMenuItemById(id).then(item => item);
-// };
-
-// onShowMoreInfo={this.handleShowMoreInfo}
-
-/* <button type="button" onClick={this.handleAddMenuItem}>
-добавить элемент меню
-</button> */

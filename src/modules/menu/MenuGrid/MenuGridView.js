@@ -5,7 +5,7 @@ import MenuCard from '../MenuCard/MenuCard';
 
 import routes from '../../../configs/routes';
 
-const MenuGrid = ({ items, onDelete, onShowMoreInfo }) => (
+const MenuGrid = ({ items, onDelete }) => (
   <ul>
     {items.map(({ name, price, id, image }) => (
       <li key={id}>
@@ -15,7 +15,6 @@ const MenuGrid = ({ items, onDelete, onShowMoreInfo }) => (
             price={price}
             image={image}
             onDelete={() => onDelete(id)}
-            onShowMoreInfo={() => onShowMoreInfo(id)}
           />
         </Link>
       </li>
