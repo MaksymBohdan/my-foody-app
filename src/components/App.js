@@ -1,40 +1,68 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AppHeader from './AppHeader/AppHeader';
-import MenuPage from '../pages/Menu';
-import MenuItemPage from '../pages/MenuItem';
-import AboutPage from '../pages/About';
-import ContactPage from '../pages/Contact';
-import DeliveryPage from '../pages/Delivery';
-import AccountPage from '../pages/Account';
-import OrderHistoryPage from '../pages/OrderHistory';
-import PlannerPage from '../pages/Planner';
-// import MainComponent from './main/MainComponent';
-// import AuthComponent from './authentication/AuthComponent';
+import Loader from './Loader/Loader';
 
 import routes from '../configs/routes';
 
-class App extends Component {
-  state = {};
+const AsyncMenuPage = lazy(() =>
+  import('../pages/Menu' /* webpackChunkName: "menu-page" */),
+);
 
-  render() {
-    return (
-      <Fragment>
-        <AppHeader />
-        <Switch>
-          <Route exact path={routes.MENU} component={MenuPage} />
-          <Route path={routes.MENU_ITEM} component={MenuItemPage} />
-          <Route path={routes.ABOUT} component={AboutPage} />
-          <Route path={routes.CONTACT} component={ContactPage} />
-          <Route path={routes.DELIVERY} component={DeliveryPage} />
-          <Route path={routes.ACCOUNT} component={AccountPage} />
-          <Route path={routes.ORDER_HISTORY} component={OrderHistoryPage} />
-          <Route path={routes.PLANNER} component={PlannerPage} />
-        </Switch>
-      </Fragment>
-    );
-  }
-}
+const AsyncMenuItemPage = lazy(() =>
+  import('../pages/MenuItem' /* webpackChunkName: "menu-item-page" */),
+);
+
+const AsyncAboutPage = lazy(() =>
+  import('../pages/About' /* webpackChunkName: "about-page" */),
+);
+
+const AsyncContactPage = lazy(() =>
+  import('../pages/Contact' /* webpackChunkName: "contact-page" */),
+);
+
+const AsyncDeliveryPage = lazy(() =>
+  import('../pages/Delivery' /* webpackChunkName: "delivery-page" */),
+);
+
+const AsyncAccountPage = lazy(() =>
+  import('../pages/Account' /* webpackChunkName: "account-page" */),
+);
+
+const AsyncOrderHistoryPage = lazy(() =>
+  import('../pages/OrderHistory' /* webpackChunkName: "order-history-page" */),
+);
+
+const AsyncPlannerPage = lazy(() =>
+  import('../pages/Planner' /* webpackChunkName: "planner-page" */),
+);
+
+const App = () => (
+  <Fragment>
+    <AppHeader />
+    <Switch>
+      <Suspense fallback={Loader}>
+        <Route exact path={routes.MENU} component={AsyncMenuPage} />
+        <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
+        <Route path={routes.ABOUT} component={AsyncAboutPage} />
+        <Route path={routes.CONTACT} component={AsyncContactPage} />
+        <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
+        <Route path={routes.ACCOUNT} component={AsyncAccountPage} />
+        <Route path={routes.ORDER_HISTORY} component={AsyncOrderHistoryPage} />
+        <Route path={routes.PLANNER} component={AsyncPlannerPage} />
+      </Suspense>
+    </Switch>
+  </Fragment>
+);
 
 export default App;
+
+// import Loadable from 'react-loadable';
+
+// const AsyncMenuItemPage = Loadable({
+//   loader: () =>
+//     import('../pages/MenuItem' /* webpackChunkName: "menu-item-page" */),
+//   loading: Loader,
+//   delay: 100,
+// });
