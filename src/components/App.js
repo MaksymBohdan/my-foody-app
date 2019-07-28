@@ -42,7 +42,7 @@ const App = () => (
   <Fragment>
     <AppHeader />
     <Switch>
-      <Suspense fallback={Loader}>
+      <Suspense fallback={<Loader />}>
         <Route exact path={routes.MENU} component={AsyncMenuPage} />
         <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
         <Route path={routes.ABOUT} component={AsyncAboutPage} />
@@ -57,12 +57,3 @@ const App = () => (
 );
 
 export default App;
-
-// import Loadable from 'react-loadable';
-
-// const AsyncMenuItemPage = Loadable({
-//   loader: () =>
-//     import('../pages/MenuItem' /* webpackChunkName: "menu-item-page" */),
-//   loading: Loader,
-//   delay: 100,
-// });

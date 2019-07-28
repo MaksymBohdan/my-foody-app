@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
-import * as API from '../../../services/menuService';
+import { menuOperations, menuSelectors } from '../../../state/menu/menuAll';
 
-export default class MenuGridContainer extends Component {
-  state = {
-    menu: [],
-    loading: false,
-    error: null,
-  };
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    try {
-      const menu = await API.getAllMenuItems();
-
-      this.setState({ menu, loading: false });
-    } catch (error) {
-      this.setState({ error, loading: false });
-    }
+class MenuGridContainer extends Component {
+  componentDidMount() {
+    const { fetchMenu } = this.props;
+    fetchMenu();
   }
 
   render() {
-    const { menu, loading, error } = this.state;
+    const { menu, loading, error, onDelete } = this.props;
     return (
       <React.Fragment>
         {loading && <Loader />}
         {error && <h2>Error</h2>}
-        <MenuGrid items={menu} />
+        <MenuGrid items={menu} onDelete={onDelete} />
       </React.Fragment>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  menu: menuSelectors.getItems(state),
+  loading: menuSelectors.loading(state),
+  error: menuSelectors.error(state),
+});
+
+const mapDispatchToProps = {
+  fetchMenu: menuOperations.fetchAllItems,
+  onDelete: menuOperations.deleteItem,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MenuGridContainer);

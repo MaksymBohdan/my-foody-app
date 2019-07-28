@@ -1,36 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import MenuItemView from './MenuItemView';
 import Loader from '../../../components/Loader/Loader';
 
-import * as API from '../../../services/menuService';
+import {
+  menuItemOperations,
+  menuItemSelectors,
+} from '../../../state/menu/menuItem';
 
-export default class MenuItemContainer extends Component {
-  state = {
-    menuItem: null,
-    error: null,
-    loading: null,
-  };
-
-  // getItemById
-  async componentDidMount() {
-    const { id } = this.props;
-    this.setState({
-      loading: true,
-    });
-
-    try {
-      const menuItem = await API.getMenuItemById(id);
-
-      this.setState({ menuItem, loading: false });
-    } catch (error) {
-      this.setState({ error, loading: false });
-    }
+class MenuItemContainer extends Component {
+  componentDidMount() {
+    const { id, fetchMenuItem } = this.props;
+    fetchMenuItem(id);
   }
 
   render() {
-    const { id } = this.props;
-    const { menuItem, loading, error } = this.state;
+    const { menuItem, loading, error, id } = this.props;
 
     return (
       <React.Fragment>
@@ -41,3 +27,18 @@ export default class MenuItemContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  menuItem: menuItemSelectors.getMenuItem(state),
+  loading: menuItemSelectors.loading(state),
+  error: menuItemSelectors.error(state),
+});
+
+const mapDispathToProps = {
+  fetchMenuItem: menuItemOperations.fetchSingleItem,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispathToProps,
+)(MenuItemContainer);
