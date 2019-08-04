@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { baseUrl, menuPath } from '../configs/services';
 
-axios.defaults.baseURL = 'http://localhost:8000';
-const menuPath = '/menu';
+axios.defaults.baseURL = baseUrl;
 
 const getAllMenuItems = async () => {
   const response = await axios.get(menuPath);
@@ -11,6 +11,14 @@ const getAllMenuItems = async () => {
 
 const getMenuItemById = async id => {
   const response = await axios.get(`${menuPath}/${id}`);
+
+  return response.data;
+};
+
+const getMenuItemByCategory = async category => {
+  if (category === 'all') return getAllMenuItems();
+
+  const response = await axios.get(`${menuPath}?category=${category}}`);
 
   return response.data;
 };
@@ -27,4 +35,4 @@ const addMenuItem = async item => {
   return response.data;
 };
 
-export { getAllMenuItems, getMenuItemById, deleteMenuItem, addMenuItem };
+export { getMenuItemById, deleteMenuItem, addMenuItem, getMenuItemByCategory };
