@@ -16,9 +16,9 @@ const getMenuItemById = async id => {
 };
 
 const getMenuItemByCategory = async category => {
-  if (category === 'all') return getAllMenuItems();
+  if (category === 'all' || !category) return getAllMenuItems();
 
-  const response = await axios.get(`${menuPath}?category=${category}}`);
+  const response = await axios.get(`${menuPath}?category=${category}`);
 
   return response.data;
 };

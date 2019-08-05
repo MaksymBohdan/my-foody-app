@@ -17,21 +17,22 @@ import getCategoryFromProps from '../../../utils/menuUtils';
 
 class MenuGridContainer extends Component {
   componentDidMount() {
-    const {
-      location: { search },
-    } = this.props;
-    const currentCategory = getCategoryFromProps(search);
+    const { fetchMenuItems, fetchCategories } = this.props;
+    const currentCategory = getCategoryFromProps(this.props);
 
-    this.handlePushWithNoCategory(currentCategory);
-
-    this.fetchCategoryAndMenuItem(currentCategory);
+    fetchMenuItems(currentCategory);
+    fetchCategories();
   }
 
-  fetchCategoryAndMenuItem = category => {
-    const { fetchMenuItems, fetchCategories } = this.props;
+  componentDidUpdate(prevProps) {
+    const { fetchMenuItems } = this.props;
+    const prevCategoty = getCategoryFromProps(prevProps);
+    const currentCategory = getCategoryFromProps(this.props);
 
-    Promise.all([fetchMenuItems(category), fetchCategories()]);
-  };
+    if (prevCategoty === currentCategory) return;
+
+    fetchMenuItems(currentCategory);
+  }
 
   handleCategorySelector = category => {
     const { location, history } = this.props;
@@ -41,27 +42,9 @@ class MenuGridContainer extends Component {
     });
   };
 
-  handlePushWithNoCategory = category => {
-    const { history, location } = this.props;
-
-    if (category) return;
-
-    history.push({
-      pathname: location.pathname,
-      search: `category=all`,
-    });
-  };
-
   render() {
-    const {
-      menu,
-      loading,
-      error,
-      onDelete,
-      categories,
-      location: { search },
-    } = this.props;
-    const currentCategory = getCategoryFromProps(search);
+    const { menu, loading, error, onDelete, categories } = this.props;
+    const currentCategory = getCategoryFromProps(this.props);
 
     return (
       <React.Fragment>
@@ -72,7 +55,7 @@ class MenuGridContainer extends Component {
           onChange={this.handleCategorySelector}
           value={currentCategory}
         />
-        <MenuGrid items={menu} onDelete={onDelete} />
+        <MenuGrid {...this.props} items={menu} onDelete={onDelete} />
       </React.Fragment>
     );
   }

@@ -1,5 +1,11 @@
 import queryString from 'query-string';
 
-const getCategoryFromProps = search => queryString.parse(search).category;
+const getCategoryFromProps = props => {
+  const {
+    location: { search },
+  } = props;
+
+  return queryString.parse(search).category;
+};
 
 export default getCategoryFromProps;
