@@ -5,11 +5,16 @@ import MenuCard from '../MenuCard/MenuCard';
 
 import routes from '../../../configs/routes';
 
-const MenuGrid = ({ items, onDelete }) => (
+const MenuGrid = ({ items, onDelete, location }) => (
   <ul>
     {items.map(({ name, price, id, image }) => (
       <li key={id}>
-        <Link to={`${routes.MENU}/${id}`}>
+        <Link
+          to={{
+            pathname: `${routes.MENU}/${id}`,
+            state: { from: location },
+          }}
+        >
           <MenuCard
             name={name}
             price={price}
