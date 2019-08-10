@@ -192,6 +192,13 @@
       "price": "746.00",
       "address": "351 Schamberger Shore",
       "rating": 4
+    },
+    {
+      "address": "last one",
+      "date": 1565441458038,
+      "price": "222",
+      "rating": "10",
+      "id": 11
     }
   ],
   "categories": [

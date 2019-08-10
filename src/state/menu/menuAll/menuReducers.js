@@ -6,9 +6,6 @@ const menuReducers = (state = [], { type, payload }) => {
     case types.FETCH_ALL_SUCCESS:
       return payload;
 
-    case types.DELETE_SUCCESS:
-      return state.filter(item => item.id !== payload);
-
     default:
       return state;
   }
@@ -17,13 +14,10 @@ const menuReducers = (state = [], { type, payload }) => {
 const loadingReducer = (state = false, { type }) => {
   switch (type) {
     case types.FETCH_ALL_REQUEST:
-    case types.DELETE_REQUEST:
       return true;
 
     case types.FETCH_ALL_FAILED:
     case types.FETCH_ALL_SUCCESS:
-    case types.DELETE_SUCCESS:
-    case types.DELETE_FAILED:
       return false;
 
     default:
@@ -34,13 +28,10 @@ const loadingReducer = (state = false, { type }) => {
 const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
     case types.FETCH_ALL_FAILED:
-    case types.DELETE_FAILED:
       return payload;
 
     case types.FETCH_ALL_REQUEST:
     case types.FETCH_ALL_SUCCESS:
-    case types.DELETE_REQUEST:
-    case types.DELETE_SUCCESS:
       return null;
 
     default:

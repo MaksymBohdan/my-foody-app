@@ -21,12 +21,12 @@ const OrderHistory = ({ ordersHistory, onDelete, handleModalOpen }) => (
           <td>{order.rating}</td>
           <td>
             <button type="button" onClick={() => handleModalOpen(order.id)}>
-              I
+              Info
             </button>
           </td>
           <td>
             <button type="button" onClick={() => onDelete(order.id)}>
-              D
+              Delete
             </button>
           </td>
         </tr>

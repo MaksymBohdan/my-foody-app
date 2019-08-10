@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 
 import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
@@ -17,13 +18,12 @@ import {
   inputSearchSelectors,
 } from '../../../state/menu/inputSearch';
 
-import getCategoryFromProps from '../../../utils/menuUtils';
 import InputSearch from '../../../components/InputSearch/InputSearch';
 
 class MenuGridContainer extends Component {
   componentDidMount() {
     const { fetchMenuItems, fetchCategories } = this.props;
-    const currentCategory = getCategoryFromProps(this.props);
+    const currentCategory = this.getCategoryFromProps(this.props);
 
     fetchMenuItems(currentCategory);
     fetchCategories();
@@ -31,8 +31,8 @@ class MenuGridContainer extends Component {
 
   componentDidUpdate(prevProps) {
     const { fetchMenuItems } = this.props;
-    const prevCategoty = getCategoryFromProps(prevProps);
-    const currentCategory = getCategoryFromProps(this.props);
+    const prevCategoty = this.getCategoryFromProps(prevProps);
+    const currentCategory = this.getCategoryFromProps(this.props);
 
     if (prevCategoty === currentCategory) return;
 
@@ -47,6 +47,14 @@ class MenuGridContainer extends Component {
     });
   };
 
+  getCategoryFromProps = props => {
+    const {
+      location: { search },
+    } = props;
+
+    return queryString.parse(search).category;
+  };
+
   onInputChange = event => {
     const { handleInputSearch } = this.props;
     handleInputSearch(event.target.value);
@@ -57,11 +65,10 @@ class MenuGridContainer extends Component {
       filteredMenuItems,
       loading,
       error,
-      onDelete,
       categories,
       searchValue,
     } = this.props;
-    const currentCategory = getCategoryFromProps(this.props);
+    const currentCategory = this.getCategoryFromProps(this.props);
 
     return (
       <React.Fragment>
@@ -73,11 +80,7 @@ class MenuGridContainer extends Component {
           onChange={this.handleCategorySelector}
           value={currentCategory}
         />
-        <MenuGrid
-          {...this.props}
-          items={filteredMenuItems}
-          onDelete={onDelete}
-        />
+        <MenuGrid {...this.props} items={filteredMenuItems} />
       </React.Fragment>
     );
   }
@@ -95,7 +98,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchMenuItems: menuOperations.fetchMenuItemByCategory,
-  onDelete: menuOperations.deleteItem,
   fetchCategories: categoryOperations.fetchCategories,
   handleInputSearch: inputSearchActions.inputSearch,
 };
