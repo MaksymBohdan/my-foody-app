@@ -11,14 +11,4 @@ const fetchMenuItemByCategory = category => async dispatch => {
   }
 };
 
-const deleteItem = id => async dispatch => {
-  dispatch(actions.deleteRequest());
-  try {
-    const response = await API.deleteMenuItem(id);
-    if (response) dispatch(actions.deleteSuccess(id));
-  } catch (error) {
-    dispatch(actions.deleteFailed(error));
-  }
-};
-
-export default { fetchMenuItemByCategory, deleteItem };
+export default { fetchMenuItemByCategory };

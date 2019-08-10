@@ -23,16 +23,10 @@ const getMenuItemByCategory = async category => {
   return response.data;
 };
 
-const deleteMenuItem = async id => {
-  const response = await axios.delete(`${menuPath}/${id}`);
-
-  return response.status === 200;
-};
-
 const addMenuItem = async item => {
   const response = await axios.post(menuPath, item);
 
   return response.data;
 };
 
-export { getMenuItemById, deleteMenuItem, addMenuItem, getMenuItemByCategory };
+export { getMenuItemById, addMenuItem, getMenuItemByCategory };
