@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../../../components/AppHeader/AppHeader.module.css';
+import s from '../../header/AppHeader.module.css';
 
 const Avatar = ({ image = '', width = 60, height = 60 }) => {
   return (

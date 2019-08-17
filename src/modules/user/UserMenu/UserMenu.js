@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Avatar from '../Avatar/Avatar';
-import s from '../../../components/AppHeader/AppHeader.module.css';
+import s from '../../header/AppHeader.module.css';
 
 class UserMenu extends Component {
   containerRef = createRef();

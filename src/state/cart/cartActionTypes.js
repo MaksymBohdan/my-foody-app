@@ -1,0 +1,6 @@
+const ADD_TO_CART = 'cart/ADD_TO_CART';
+const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART';
+const ADD_ONE_ITEM = 'cart/ADD_ONE_ITEM';
+const REMOVE_ONE_ITEM = 'cart/REMOVE_ONE_ITEM';
+
+export default { ADD_TO_CART, REMOVE_FROM_CART, ADD_ONE_ITEM, REMOVE_ONE_ITEM };

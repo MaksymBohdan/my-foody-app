@@ -8,15 +8,16 @@ import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
 import CategorySelector from '../../../components/CategorySelector/CategorySelector';
 
-import { menuOperations, menuSelectors } from '../../../state/menu/menuAll';
+import { menuOperations, menuSelectors } from '../../../state/menuAll';
 import {
   categoryOperations,
   categorySelectors,
-} from '../../../state/menu/categories';
+} from '../../../state/categories';
 import {
   inputSearchActions,
   inputSearchSelectors,
-} from '../../../state/menu/inputSearch';
+} from '../../../state/inputSearch';
+import { cartActions } from '../../../state/cart';
 
 import InputSearch from '../../../components/InputSearch/InputSearch';
 
@@ -67,6 +68,7 @@ class MenuGridContainer extends Component {
       error,
       categories,
       searchValue,
+      addToCart,
     } = this.props;
     const currentCategory = this.getCategoryFromProps(this.props);
 
@@ -80,7 +82,11 @@ class MenuGridContainer extends Component {
           onChange={this.handleCategorySelector}
           value={currentCategory}
         />
-        <MenuGrid {...this.props} items={filteredMenuItems} />
+        <MenuGrid
+          {...this.props}
+          items={filteredMenuItems}
+          addToCart={addToCart}
+        />
       </React.Fragment>
     );
   }
@@ -100,6 +106,7 @@ const mapDispatchToProps = {
   fetchMenuItems: menuOperations.fetchMenuItemByCategory,
   fetchCategories: categoryOperations.fetchCategories,
   handleInputSearch: inputSearchActions.inputSearch,
+  addToCart: cartActions.addToCart,
 };
 
 export default compose(

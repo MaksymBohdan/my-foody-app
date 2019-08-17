@@ -1,14 +1,17 @@
 import { combineReducers } from 'redux';
-import menuAllReducer from './menu/menuAll/menuReducers';
-import menuItemReducer from './menu/menuItem/itemReducers';
-import categoryReducer from './menu/categories/categoryReducers';
-import inputSearchReducers from './menu/inputSearch/inputSearchReducers';
+import { menuReducer, menuEntitiesReducer } from './menuAll/menuReducers';
+import menuItemReducer from './menuItem/itemReducers';
+import categoryReducer from './categories/categoryReducers';
+import inputSearchReducers from './inputSearch/inputSearchReducers';
+import cartReducer from './cart/cartReducers';
 
 export default combineReducers({
-  menu: combineReducers({
-    menuAll: menuAllReducer,
-    menuItem: menuItemReducer,
-    category: categoryReducer,
-    searchValue: inputSearchReducers,
+  entities: combineReducers({
+    menu: menuEntitiesReducer,
   }),
+  menu: menuReducer,
+  category: categoryReducer,
+  menuItem: menuItemReducer,
+  searchValue: inputSearchReducers,
+  cart: cartReducer,
 });

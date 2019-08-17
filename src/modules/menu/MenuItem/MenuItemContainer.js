@@ -5,10 +5,7 @@ import { compose } from 'redux';
 
 import MenuItemView from './MenuItemView';
 import Loader from '../../../components/Loader/Loader';
-import {
-  menuItemOperations,
-  menuItemSelectors,
-} from '../../../state/menu/menuItem';
+import { menuItemOperations, menuItemSelectors } from '../../../state/menuItem';
 
 class MenuItemContainer extends Component {
   componentDidMount() {
@@ -52,7 +49,7 @@ const mapStateToProps = state => ({
   error: menuItemSelectors.error(state),
 });
 
-const mapDispathToProps = {
+const mapDispatchToProps = {
   fetchMenuItem: menuItemOperations.fetchSingleItem,
 };
 
@@ -60,6 +57,6 @@ export default compose(
   withRouter,
   connect(
     mapStateToProps,
-    mapDispathToProps,
+    mapDispatchToProps,
   ),
 )(MenuItemContainer);
