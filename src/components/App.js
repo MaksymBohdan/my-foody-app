@@ -1,7 +1,7 @@
 import React, { Fragment, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import AppHeader from './AppHeader/AppHeader';
+import AppHeader from '../modules/header/AppHeader';
 import Loader from './Loader/Loader';
 
 import routes from '../configs/routes';
@@ -38,6 +38,10 @@ const AsyncPlannerPage = lazy(() =>
   import('../pages/Planner' /* webpackChunkName: "planner-page" */),
 );
 
+const AsyncCartPage = lazy(() =>
+  import('../pages/Cart' /* webpackChunkName: "cart-page" */),
+);
+
 const App = () => (
   <Fragment>
     <AppHeader />
@@ -51,6 +55,7 @@ const App = () => (
         <Route path={routes.ACCOUNT} component={AsyncAccountPage} />
         <Route path={routes.ORDER_HISTORY} component={AsyncOrderHistoryPage} />
         <Route path={routes.PLANNER} component={AsyncPlannerPage} />
+        <Route path={routes.CART} component={AsyncCartPage} />
       </Suspense>
     </Switch>
   </Fragment>

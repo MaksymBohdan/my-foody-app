@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Logo from '../Logo/Logo';
-import Navigation from '../Navigation/Navigation';
-import UserMenu from '../../modules/user/UserMenu/UserMenu';
+import Logo from '../../components/Logo/Logo';
+import Navigation from '../../components/Navigation/Navigation';
+import UserMenu from '../user/UserMenu/UserMenu';
+import Cart from '../cart/CartIcon/CartIconContainer';
 
 import navItems from '../../configs/main-nav';
 import logo from '../../img/logo.png';
@@ -17,6 +18,7 @@ const HeadComponent = () => (
     </div>
     <div>
       <Navigation navItems={navItems} />
+      <Cart />
     </div>
     <div className={s.Header__usermenu}>
       <UserMenu avatar={avatar} name="Vasia Pupkin" />

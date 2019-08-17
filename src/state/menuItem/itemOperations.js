@@ -1,5 +1,5 @@
 import actions from './itemActions';
-import * as API from '../../../services/menuService';
+import * as API from '../../services/menuService';
 
 const fetchSingleItem = id => async dispatch => {
   dispatch(actions.fetchSingleItemRequest());

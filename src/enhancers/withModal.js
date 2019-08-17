@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import s from '../components/AppHeader/AppHeader.module.css';
+import s from '../modules/header/AppHeader.module.css';
 
 const withModal = WrappedComponent => {
   return class WithModal extends Component {

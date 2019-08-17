@@ -4,7 +4,7 @@ import types from './menuActionTypes';
 const menuReducers = (state = [], { type, payload }) => {
   switch (type) {
     case types.FETCH_ALL_SUCCESS:
-      return payload;
+      return payload.ids;
 
     default:
       return state;
@@ -38,8 +38,15 @@ const errorReducer = (state = null, { type, payload }) => {
       return state;
   }
 };
-export default combineReducers({
+export const menuReducer = combineReducers({
   items: menuReducers,
   loading: loadingReducer,
   error: errorReducer,
 });
+
+export const menuEntitiesReducer = (state = {}, { payload }) => {
+  if (payload && payload.entities) {
+    return payload.entities;
+  }
+  return state;
+};

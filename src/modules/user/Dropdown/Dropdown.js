@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import userNavItems from '../../../configs/user-nav';
 
-import s from '../../../components/AppHeader/AppHeader.module.css';
+import s from '../../header/AppHeader.module.css';
 
 const Dropdown = () => {
   return (

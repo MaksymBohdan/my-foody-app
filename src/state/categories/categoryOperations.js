@@ -1,5 +1,5 @@
 import actions from './categoryActions';
-import getAllCategories from '../../../services/categoryService';
+import getAllCategories from '../../services/categoryService';
 
 const fetchCategories = () => async dispatch => {
   dispatch(actions.fetchCategoriesRequest());
