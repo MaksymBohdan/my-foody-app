@@ -1,7 +1,17 @@
+// @flow
 import { combineReducers } from 'redux';
+import type { CartAction } from '../../configs/flowTypes/state/actions';
+import type {
+  ProductIds,
+  ProductAmount,
+} from '../../configs/flowTypes/state/state';
+import type { CombineReducersState } from '../../configs/flowTypes/state/reducer';
 import types from './cartActionTypes';
 
-const cartIdsReducer = (state = [], { type, payload }) => {
+const cartIdsReducer = (
+  state: ProductIds = [],
+  { type, payload }: CartAction,
+) => {
   switch (type) {
     case types.ADD_TO_CART:
       return state.includes(payload) ? state : [...state, payload];
@@ -14,7 +24,10 @@ const cartIdsReducer = (state = [], { type, payload }) => {
   }
 };
 
-const amountReducer = (state = {}, { type, payload }) => {
+const amountReducer = (
+  state: ProductAmount = {},
+  { type, payload }: CartAction,
+) => {
   switch (type) {
     case types.ADD_TO_CART:
       return {
@@ -40,7 +53,7 @@ const amountReducer = (state = {}, { type, payload }) => {
   }
 };
 
-export default combineReducers({
+export default combineReducers<CombineReducersState, CartAction>({
   ids: cartIdsReducer,
   amount: amountReducer,
 });
