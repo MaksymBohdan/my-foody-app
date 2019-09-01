@@ -1,21 +1,31 @@
+// @flow
 import { createSelector } from 'reselect';
 import { inputSearchSelectors } from '../inputSearch/index';
+import type { Selector } from '../../configs/flowTypes/state/selector';
+import type {
+  MenuItems,
+  Entities,
+  Entity,
+  StateLoading,
+  StateError,
+} from '../../configs/flowTypes/state/state';
 
-const menuItems = state => state.menu.items;
-const menuEntities = state => state.entities.menu;
+const menuItems: Selector<MenuItems> = state => state.menu.items;
 
-const getItems = createSelector(
+const menuEntities: Selector<Entities> = state => state.entities.menu;
+
+const getItems: Selector<Array<Entity>> = createSelector(
   [menuItems, menuEntities],
   (items, entities) => items.map(item => entities[item]),
 );
 
-const loading = state => state.menu.loading;
-const error = state => state.menu.error;
+const loading: Selector<StateLoading> = state => state.menu.loading;
+const error: Selector<StateError> = state => state.menu.error;
 
-const getFilteredItems = createSelector(
+const getFilteredItems: Selector<Array<Entity>> = createSelector(
   [getItems, inputSearchSelectors.getSearchValue],
   (items, input) =>
     items.filter(item => item.name.toLowerCase().includes(input.toLowerCase())),
 );
 
-export default { getItems, loading, error, getFilteredItems, menuEntities };
+export default { loading, error, getFilteredItems, menuEntities };

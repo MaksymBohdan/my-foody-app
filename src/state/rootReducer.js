@@ -1,11 +1,17 @@
+// @flow
 import { combineReducers } from 'redux';
 import { menuReducer, menuEntitiesReducer } from './menuAll/menuReducers';
 import menuItemReducer from './menuItem/itemReducers';
 import categoryReducer from './categories/categoryReducers';
 import inputSearchReducers from './inputSearch/inputSearchReducers';
 import cartReducer from './cart/cartReducers';
+import type { State } from '../configs/flowTypes/state/state';
+import type {
+  Reducer,
+  ReducerDefaultAction,
+} from '../configs/flowTypes/state/reducer';
 
-export default combineReducers({
+const rootReducer: Reducer<State, ReducerDefaultAction> = combineReducers({
   entities: combineReducers({
     menu: menuEntitiesReducer,
   }),
@@ -15,3 +21,5 @@ export default combineReducers({
   searchValue: inputSearchReducers,
   cart: cartReducer,
 });
+
+export default rootReducer;

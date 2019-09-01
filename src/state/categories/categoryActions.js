@@ -1,15 +1,25 @@
+// @flow
 import types from './categoryActionTypes';
+import type {
+  CategoryRequestAction,
+  ErrorAction,
+  CategoryFetchSuccessAction,
+  Category,
+  ErrorPayload,
+} from '../../configs/flowTypes/state/actions';
 
-const fetchCategoriesRequest = () => ({
+const fetchCategoriesRequest = (): CategoryRequestAction => ({
   type: types.FETCH_REQUEST,
 });
 
-const fetchCategoriesSuccess = categories => ({
+const fetchCategoriesSuccess = (
+  categories: Category,
+): CategoryFetchSuccessAction => ({
   type: types.FETCH_SUCCESS,
   payload: categories,
 });
 
-const fetchCategoriesFailed = error => ({
+const fetchCategoriesFailed = (error: ErrorPayload): ErrorAction => ({
   type: types.FETCH_FAILED,
   payload: error,
 });

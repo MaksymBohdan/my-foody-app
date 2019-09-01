@@ -1,7 +1,26 @@
+// @flow
 import { combineReducers } from 'redux';
-import types from './itemActionTypes';
 
-const menuItemReducer = (state = {}, { type, payload }) => {
+import types from './itemActionTypes';
+import type {
+  Entity,
+  StateLoading,
+  StateError,
+} from '../../configs/flowTypes/state/state';
+import type {
+  FetchSingleItemSuccessAction,
+  ErrorAction,
+  LoadingAction,
+} from '../../configs/flowTypes/state/actions';
+import type {
+  CombineReducersMenuItem,
+  ReducerDefaultAction,
+} from '../../configs/flowTypes/state/reducer';
+
+const menuItemReducer = (
+  state: Entity = {},
+  { type, payload }: FetchSingleItemSuccessAction,
+) => {
   switch (type) {
     case types.FETCH_SINGLE_ITEM_SUCCESS:
       return payload;
@@ -11,7 +30,10 @@ const menuItemReducer = (state = {}, { type, payload }) => {
   }
 };
 
-const loadingReducer = (state = false, { type }) => {
+const loadingReducer = (
+  state: StateLoading = false,
+  { type }: LoadingAction,
+) => {
   switch (type) {
     case types.FETCH_SINGLE_ITEM_REQUEST:
       return true;
@@ -25,7 +47,10 @@ const loadingReducer = (state = false, { type }) => {
   }
 };
 
-const errorReducer = (state = null, { type, payload }) => {
+const errorReducer = (
+  state: StateError = null,
+  { type, payload }: ErrorAction,
+) => {
   switch (type) {
     case types.FETCH_SINGLE_ITEM_FAILED:
       return payload;
@@ -39,7 +64,7 @@ const errorReducer = (state = null, { type, payload }) => {
   }
 };
 
-export default combineReducers({
+export default combineReducers<CombineReducersMenuItem, ReducerDefaultAction>({
   item: menuItemReducer,
   loading: loadingReducer,
   error: errorReducer,

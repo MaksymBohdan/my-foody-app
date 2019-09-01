@@ -1,10 +1,18 @@
+// @flow
 import { normalize } from 'normalizr';
 
 import actions from './menuActions';
 import * as API from '../../services/menuService';
 import menuSchema from '../../services/schemas/menuSchema';
 
-const fetchMenuItemByCategory = category => async dispatch => {
+import type {
+  Dispatch,
+  ThunkAction,
+} from '../../configs/flowTypes/state/operations';
+
+const fetchMenuItemByCategory = (category: ?string): ThunkAction => async (
+  dispatch: Dispatch,
+) => {
   dispatch(actions.fetchAllRequest());
   try {
     const response = await API.getMenuItemByCategory(category);
