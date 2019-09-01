@@ -9,11 +9,9 @@ export type ProductAmount = {
 
 type StateCart = { ids: ProductIds, amount: ProductAmount };
 
-// FetchData
-type FetchData = {
-  loading: boolean,
-  error: ?void | string,
-};
+export type StateLoading = boolean;
+
+export type StateError = ?void | string;
 
 // Category
 type CategoryItem = {
@@ -25,11 +23,12 @@ export type CategoryItems = Array<CategoryItem>;
 
 type StateCategory = {
   item: CategoryItems,
-  ...FetchData,
+  loading: StateLoading,
+  error: StateError,
 };
 
 // Entities
-type Entity = {
+export type Entity = {
   category: string,
   description: string,
   id: number,
@@ -39,7 +38,7 @@ type Entity = {
   price: number,
 };
 
-type Entities = {
+export type Entities = {
   [entity_name: string]: Entity,
 };
 
@@ -48,18 +47,22 @@ type StateEntities = {
 };
 
 // Menu
+export type MenuItems = Array<string>;
+
 type StateMenu = {
-  items: Array<string>,
-  ...FetchData,
+  items: MenuItems,
+  loading: StateLoading,
+  error: StateError,
 };
 
 // MenuItem
 type StateMenuItem = {
   item: Entity,
-  ...FetchData,
+  loading: StateLoading,
+  error: StateError,
 };
 
-type StateSearchValue = string;
+export type StateSearchValue = string;
 
 // State
 export type State = {

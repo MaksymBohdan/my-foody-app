@@ -7,7 +7,7 @@ import type {
 } from '../../configs/flowTypes/state/state';
 import type {
   Selector,
-  CartProductsType,
+  CartProductsSelectorType,
 } from '../../configs/flowTypes/state/selector';
 
 const getCartProductIds: Selector<ProductIds> = state => state.cart.ids;
@@ -20,7 +20,9 @@ const getCartProductsAmount: Selector<number> = createSelector(
   ids => ids.length,
 );
 
-const getCartProducts: Selector<Array<CartProductsType>> = createSelector(
+const getCartProducts: Selector<
+  Array<CartProductsSelectorType>,
+> = createSelector(
   [getCartProductIds, getCartProductAmounts, menuSelectors.menuEntities],
   (ids, amount, entities) =>
     ids.map(id => ({ ...entities[id], amount: amount[id] })),

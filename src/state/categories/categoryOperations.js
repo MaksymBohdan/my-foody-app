@@ -1,7 +1,12 @@
+// @flow
 import actions from './categoryActions';
 import getAllCategories from '../../services/categoryService';
+import type {
+  Dispatch,
+  ThunkAction,
+} from '../../configs/flowTypes/state/operations';
 
-const fetchCategories = () => async dispatch => {
+const fetchCategories = (): ThunkAction => async (dispatch: Dispatch) => {
   dispatch(actions.fetchCategoriesRequest());
   try {
     const response = await getAllCategories();

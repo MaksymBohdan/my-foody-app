@@ -1,7 +1,26 @@
+// @flow
 import { combineReducers } from 'redux';
 import types from './categoryActionTypes';
+import type {
+  CategoryItems,
+  StateLoading,
+  StateError,
+} from '../../configs/flowTypes/state/state';
+import type {
+  CategoryFetchSuccessAction,
+  LoadingAction,
+  ErrorAction,
+} from '../../configs/flowTypes/state/actions';
 
-const categoryReducer = (state = [], { type, payload }) => {
+import type {
+  CombineReducersCategory,
+  ReducerDefaultAction,
+} from '../../configs/flowTypes/state/reducer';
+
+const categoryReducer = (
+  state: CategoryItems = [],
+  { type, payload }: CategoryFetchSuccessAction,
+) => {
   switch (type) {
     case types.FETCH_SUCCESS:
       return payload;
@@ -11,7 +30,10 @@ const categoryReducer = (state = [], { type, payload }) => {
   }
 };
 
-const loadingReducer = (state = false, { type }) => {
+const loadingReducer = (
+  state: StateLoading = false,
+  { type }: LoadingAction,
+) => {
   switch (type) {
     case types.FETCH_REQUEST:
       return true;
@@ -25,7 +47,10 @@ const loadingReducer = (state = false, { type }) => {
   }
 };
 
-const errorReducer = (state = null, { type, payload }) => {
+const errorReducer = (
+  state: StateError = null,
+  { type, payload }: ErrorAction,
+) => {
   switch (type) {
     case types.FETCH_FAILED:
       return payload;
@@ -39,7 +64,7 @@ const errorReducer = (state = null, { type, payload }) => {
   }
 };
 
-export default combineReducers({
+export default combineReducers<CombineReducersCategory, ReducerDefaultAction>({
   item: categoryReducer,
   loading: loadingReducer,
   error: errorReducer,

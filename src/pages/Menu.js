@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import MenuGridContainer from '../modules/menu/MenuGrid/MenuGridContainer';
 

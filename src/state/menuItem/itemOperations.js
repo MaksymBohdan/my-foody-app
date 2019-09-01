@@ -1,7 +1,14 @@
+// @flow
 import actions from './itemActions';
 import * as API from '../../services/menuService';
+import type {
+  Dispatch,
+  ThunkAction,
+} from '../../configs/flowTypes/state/operations';
 
-const fetchSingleItem = id => async dispatch => {
+const fetchSingleItem = (id: string): ThunkAction => async (
+  dispatch: Dispatch,
+) => {
   dispatch(actions.fetchSingleItemRequest());
   try {
     const response = await API.getMenuItemById(id);
