@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import { baseUrl, menuCategoriesPath } from '../configs/services';
 

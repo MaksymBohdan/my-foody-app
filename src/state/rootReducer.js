@@ -1,5 +1,4 @@
 // @flow
-
 import { combineReducers } from 'redux';
 import { menuReducer, menuEntitiesReducer } from './menuAll/menuReducers';
 import menuItemReducer from './menuItem/itemReducers';
