@@ -1,21 +1,26 @@
+// @flow
 import axios from 'axios';
+import type { AxiosPromise } from 'axios';
+import type { Entity } from '../configs/flowTypes/state/state';
 import { baseUrl, menuPath } from '../configs/services';
 
 axios.defaults.baseURL = baseUrl;
 
-const getAllMenuItems = async () => {
+const getAllMenuItems = async (): AxiosPromise<Array<Entity>> => {
   const response = await axios.get(menuPath);
 
   return response.data;
 };
 
-const getMenuItemById = async id => {
+const getMenuItemById = async (id: string): AxiosPromise<Entity> => {
   const response = await axios.get(`${menuPath}/${id}`);
 
   return response.data;
 };
 
-const getMenuItemByCategory = async category => {
+const getMenuItemByCategory = async (
+  category: ?string,
+): AxiosPromise<Array<Entity>> => {
   if (category === 'all' || !category) return getAllMenuItems();
 
   const response = await axios.get(`${menuPath}?category=${category}`);
@@ -23,10 +28,4 @@ const getMenuItemByCategory = async category => {
   return response.data;
 };
 
-const addMenuItem = async item => {
-  const response = await axios.post(menuPath, item);
-
-  return response.data;
-};
-
-export { getMenuItemById, addMenuItem, getMenuItemByCategory };
+export { getMenuItemById, getMenuItemByCategory };

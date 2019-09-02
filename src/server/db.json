@@ -194,10 +194,10 @@
       "rating": 4
     },
     {
-      "address": "last one",
-      "date": 1565441458038,
+      "address": "some order",
+      "date": 1567438725748,
       "price": "222",
-      "rating": "10",
+      "rating": "1",
       "id": 11
     }
   ],
