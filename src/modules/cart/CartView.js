@@ -1,11 +1,13 @@
+// @flow
 import React from 'react';
+import type { CartViewProps } from '../../configs/flowTypes/module/cart';
 
 const CartView = ({
   products = [],
   removeFromCart,
   addOneItem,
   removeOneItem,
-}) =>
+}: CartViewProps) =>
   products.length > 0 ? (
     <table>
       <tbody>

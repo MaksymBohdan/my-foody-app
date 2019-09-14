@@ -1,6 +1,14 @@
+// @flow
 import React, { Component, Fragment } from 'react';
+import type {
+  OrderHistoryFormProps,
+  OrderHistoryFormState,
+} from '../../../configs/flowTypes/module/orderHistory';
 
-class OrderHistoryForm extends Component {
+class OrderHistoryForm extends Component<
+  OrderHistoryFormProps,
+  OrderHistoryFormState,
+> {
   state = {
     address: '',
     date: Date.now(),
@@ -8,9 +16,13 @@ class OrderHistoryForm extends Component {
     rating: '',
   };
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleChange = (e: SyntheticEvent<HTMLInputElement>) =>
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
 
-  handleSubmit = async e => {
+  handleChangeNumberField = (e: SyntheticEvent<HTMLInputElement>) =>
+    this.setState({ [e.currentTarget.name]: Number(e.currentTarget.value) });
+
+  handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { addItemOrderHistory } = this.props;
 
@@ -44,7 +56,7 @@ class OrderHistoryForm extends Component {
             type="number"
             name="price"
             value={price}
-            onChange={this.handleChange}
+            onChange={this.handleChangeNumberField}
             placeholder="price"
           />
           <br />
@@ -52,7 +64,7 @@ class OrderHistoryForm extends Component {
             type="number"
             name="rating"
             value={rating}
-            onChange={this.handleChange}
+            onChange={this.handleChangeNumberField}
             placeholder="rating"
             max="10"
             min="1"

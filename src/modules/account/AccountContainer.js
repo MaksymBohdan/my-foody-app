@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+// @flow
+import React from 'react';
 import AccountView from './AccountView';
 
-class AccountContainer extends Component {
-  componentDidMount() {}
-
-  render() {
-    return <AccountView />;
-  }
-}
+const AccountContainer = () => {
+  return <AccountView />;
+};
 
 export default AccountContainer;

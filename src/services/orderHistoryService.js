@@ -1,11 +1,13 @@
 // @flow
 import axios from 'axios';
 import type { AxiosPromise } from 'axios';
+
 import type {
-  OrderHistory,
   DeleteOrderHistory,
+  OrderHistory,
   PostOrderHistory,
-} from '../configs/flowTypes/orderHistory';
+  OrderHistoryFormState,
+} from '../configs/flowTypes/module/orderHistory';
 import { baseUrl, orderHistoryPath } from '../configs/services';
 
 axios.defaults.baseURL = baseUrl;
@@ -17,7 +19,7 @@ const getAllOrdersHistory = async (): AxiosPromise<Array<OrderHistory>> => {
 };
 
 const deleteItemOrderHistory = async (
-  id: string,
+  id: number,
 ): AxiosPromise<DeleteOrderHistory> => {
   const response = await axios.delete(`${orderHistoryPath}/${id}`);
 
@@ -25,7 +27,7 @@ const deleteItemOrderHistory = async (
 };
 
 const getItemOrderHistoryById = async (
-  id: string,
+  id: number,
 ): AxiosPromise<OrderHistory> => {
   const response = await axios.get(`${orderHistoryPath}/${id}`);
 
@@ -33,7 +35,7 @@ const getItemOrderHistoryById = async (
 };
 
 const postItemOrderHistory = async (
-  order: OrderHistory,
+  order: OrderHistoryFormState,
 ): AxiosPromise<Array<PostOrderHistory>> => {
   const response = await axios.post(orderHistoryPath, order);
   // eslint-disable-next-line no-unused-vars

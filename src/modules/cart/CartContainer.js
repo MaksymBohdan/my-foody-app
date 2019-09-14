@@ -1,10 +1,12 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CartView from './CartView';
 import { cartActions, cartSelectors } from '../../state/cart';
 import { menuOperations } from '../../state/menuAll';
+import type { CartContainerProps } from '../../configs/flowTypes/module/cart';
 
-class CartContainer extends Component {
+class CartContainer extends Component<CartContainerProps, {}> {
   componentDidMount() {
     const { fetchMenuItems } = this.props;
     fetchMenuItems('all');
@@ -35,7 +37,7 @@ const mapDispatchToProps = {
   fetchMenuItems: menuOperations.fetchMenuItemByCategory,
 };
 
-export default connect(
+export default connect<CartContainerProps, {}, _, _, _, _>(
   mapStateToProps,
   mapDispatchToProps,
 )(CartContainer);

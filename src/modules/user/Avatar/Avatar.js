@@ -1,7 +1,9 @@
+// @flow
 import React from 'react';
 import s from '../../header/AppHeader.module.css';
+import type { PropsLogo } from '../../../configs/flowTypes/components/index';
 
-const Avatar = ({ image = '', width = 60, height = 60 }) => {
+const Avatar = ({ image = '', width = '60', height = '60' }: PropsLogo) => {
   return (
     <img
       className={s.Avatar}

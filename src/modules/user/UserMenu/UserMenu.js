@@ -1,10 +1,15 @@
+// @flow
 import React, { Component, createRef } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Avatar from '../Avatar/Avatar';
 import s from '../../header/AppHeader.module.css';
+import type {
+  UserMenuProps,
+  UserMenuState,
+} from '../../../configs/flowTypes/module/user';
 
-class UserMenu extends Component {
-  containerRef = createRef();
+class UserMenu extends Component<UserMenuProps, UserMenuState> {
+  containerRef: any = createRef<HTMLElement>();
 
   state = {
     isDropdownOpen: false,
@@ -14,7 +19,7 @@ class UserMenu extends Component {
     window.addEventListener('click', this.handleWindowClick);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps: UserMenuProps, nextState: UserMenuState) {
     const { isDropdownOpen } = this.state;
     return nextState.isDropdownOpen !== isDropdownOpen;
   }
@@ -23,8 +28,9 @@ class UserMenu extends Component {
     window.remove('click', this.handleWindowClick);
   }
 
-  handleWindowClick = e => {
+  handleWindowClick = (e: SyntheticEvent<*>) => {
     const { isDropdownOpen } = this.state;
+    // $FlowFixMe
     const isTargetTypeOfLink = e.target.tagName.toLowerCase() === 'a';
     const isTargetInsideContainer = this.containerRef.current.contains(
       e.target,

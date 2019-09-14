@@ -1,4 +1,6 @@
+// @flow
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -7,7 +9,9 @@ import MenuItemView from './MenuItemView';
 import Loader from '../../../components/Loader/Loader';
 import { menuItemOperations, menuItemSelectors } from '../../../state/menuItem';
 
-class MenuItemContainer extends Component {
+import type { MenuItemContainerProps } from '../../../configs/flowTypes/module/menuItem';
+
+class MenuItemContainer extends Component<MenuItemContainerProps, *> {
   componentDidMount() {
     const { id, fetchMenuItem } = this.props;
     fetchMenuItem(id);
