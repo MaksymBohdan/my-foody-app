@@ -10,15 +10,15 @@ export type PropsCategorySelector = {
 
 // inputSearch
 export type PropsInputSearch = {
-  onChange: () => void,
+  onChange: (evt: SyntheticEvent<HTMLInputElement>) => void,
   value: string,
 };
 
 // Logo
 export type PropsLogo = {
   image: string,
-  width: number,
-  height: number,
+  width?: string,
+  height?: string,
 };
 
 type OptionNavItems = Array<{ name: string, path: string }>;

@@ -1,6 +1,8 @@
+// @flow
 import React from 'react';
+import type { AbstractComponent } from 'react';
 
-const passProps = props => WrappedComponent => {
+const passProps = (props: any) => (WrappedComponent: AbstractComponent<*>) => {
   const PassProps = () => <WrappedComponent {...props} />;
   return PassProps;
 };

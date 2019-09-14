@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 
 import OrderHistoryView from './OrderHistoryGridView';
@@ -7,10 +8,18 @@ import OrderHistoryForm from '../OrderHistoryForm/OrderHistoryForm';
 
 import * as API from '../../../services/orderHistoryService';
 
-class OrderHistoryContainer extends Component {
+import type {
+  OrderHistoryFormState,
+  OrderHistoryGridContainerState,
+} from '../../../configs/flowTypes/module/orderHistory';
+
+class OrderHistoryContainer extends Component<
+  {},
+  OrderHistoryGridContainerState,
+> {
   state = {
     ordersHistory: [],
-    singleOrder: [],
+    singleOrder: {},
     loading: false,
     error: null,
     isModalOpen: false,
@@ -21,14 +30,13 @@ class OrderHistoryContainer extends Component {
 
     try {
       const ordersHistory = await API.getAllOrdersHistory();
-
       this.setState({ ordersHistory, loading: false });
     } catch (error) {
-      this.state({ error, loading: false });
+      this.setState({ error, loading: false });
     }
   }
 
-  handleDeleteItemOrderHistory = async id => {
+  handleDeleteItemOrderHistory = async (id: number): Promise<void> => {
     try {
       const isDelete = await API.deleteItemOrderHistory(id);
 
@@ -38,27 +46,27 @@ class OrderHistoryContainer extends Component {
         ordersHistory: prev.ordersHistory.filter(order => order.id !== id),
       }));
     } catch (error) {
-      this.state({ error, loading: false });
+      this.setState({ error, loading: false });
     }
   };
 
-  fetchSingleOrederInfo = async id => {
+  fetchSingleOrederInfo = async (id: number): Promise<void> => {
     try {
       const singleOrder = await API.getItemOrderHistoryById(id);
       this.setState({ singleOrder });
     } catch (error) {
-      this.state({ error });
+      this.setState({ error });
     }
   };
 
-  handleModalOpen = id => {
+  handleModalOpen = (id: number) => {
     this.setState({ isModalOpen: true });
     this.fetchSingleOrederInfo(id);
   };
 
   handleModalClose = () => this.setState({ isModalOpen: false });
 
-  addItemOrderHistory = async order => {
+  addItemOrderHistory = async (order: OrderHistoryFormState): Promise<void> => {
     try {
       const newOrder = await API.postItemOrderHistory(order);
 

@@ -1,7 +1,9 @@
+// @flow
 import React from 'react';
 import passProps from '../../enhancers/passProps';
+import type { AccountViewProps } from '../../configs/flowTypes/module/account';
 
-const AccountView = ({ image, name, phone, mail }) => (
+const AccountView = ({ image, name, phone, mail }: AccountViewProps) => (
   <>
     <div>
       <img src={image} alt="accountImage" />

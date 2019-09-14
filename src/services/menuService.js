@@ -12,7 +12,7 @@ const getAllMenuItems = async (): AxiosPromise<Array<Entity>> => {
   return response.data;
 };
 
-const getMenuItemById = async (id: string): AxiosPromise<Entity> => {
+const getMenuItemById = async (id: number): AxiosPromise<Entity> => {
   const response = await axios.get(`${menuPath}/${id}`);
 
   return response.data;

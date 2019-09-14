@@ -6,7 +6,7 @@ import type {
   ThunkAction,
 } from '../../configs/flowTypes/state/operations';
 
-const fetchSingleItem = (id: string): ThunkAction => async (
+const fetchSingleItem = (id: number): ThunkAction => async (
   dispatch: Dispatch,
 ) => {
   dispatch(actions.fetchSingleItemRequest());

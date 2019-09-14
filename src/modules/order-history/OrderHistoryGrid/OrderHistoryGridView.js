@@ -1,6 +1,12 @@
+// @flow
 import React from 'react';
+import type { orederHistoryGridViewProps } from '../../../configs/flowTypes/module/orderHistory';
 
-const OrderHistory = ({ ordersHistory, onDelete, handleModalOpen }) => (
+const OrderHistory = ({
+  ordersHistory,
+  onDelete,
+  handleModalOpen,
+}: orederHistoryGridViewProps) => (
   <table>
     <thead>
       <tr>

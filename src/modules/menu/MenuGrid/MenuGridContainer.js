@@ -1,9 +1,9 @@
+// @flow
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-
 import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
 import CategorySelector from '../../../components/CategorySelector/CategorySelector';
@@ -20,8 +20,9 @@ import {
 import { cartActions } from '../../../state/cart';
 
 import InputSearch from '../../../components/InputSearch/InputSearch';
+import type { MenuGridContainerProps } from '../../../configs/flowTypes/module/menu';
 
-class MenuGridContainer extends Component {
+class MenuGridContainer extends Component<MenuGridContainerProps, {}> {
   componentDidMount() {
     const { fetchMenuItems, fetchCategories } = this.props;
     const currentCategory = this.getCategoryFromProps(this.props);
@@ -48,17 +49,19 @@ class MenuGridContainer extends Component {
     });
   };
 
-  getCategoryFromProps = props => {
+  getCategoryFromProps = (props: ?MenuGridContainerProps): string => {
     const {
+      // $FlowFixMe
       location: { search },
-    } = props;
+    }: ?MenuGridContainerProps = props;
 
+    // $FlowFixMe
     return queryString.parse(search).category;
   };
 
-  onInputChange = event => {
+  onInputChange = (event: SyntheticEvent<HTMLInputElement>) => {
     const { handleInputSearch } = this.props;
-    handleInputSearch(event.target.value);
+    handleInputSearch(event.currentTarget.value);
   };
 
   render() {
@@ -68,9 +71,8 @@ class MenuGridContainer extends Component {
       error,
       categories,
       searchValue,
-      addToCart,
     } = this.props;
-    const currentCategory = this.getCategoryFromProps(this.props);
+    const currentCategory: any = this.getCategoryFromProps(this.props);
 
     return (
       <React.Fragment>
@@ -82,11 +84,7 @@ class MenuGridContainer extends Component {
           onChange={this.handleCategorySelector}
           value={currentCategory}
         />
-        <MenuGrid
-          {...this.props}
-          items={filteredMenuItems}
-          addToCart={addToCart}
-        />
+        <MenuGrid {...this.props} items={filteredMenuItems} />
       </React.Fragment>
     );
   }

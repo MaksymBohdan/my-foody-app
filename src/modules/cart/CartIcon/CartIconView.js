@@ -1,8 +1,10 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../../configs/routes';
+import type { CartIconProps } from '../../../configs/flowTypes/module/cart';
 
-const CartIcon = ({ amount }) => (
+const CartIcon = ({ amount }: CartIconProps) => (
   <div>
     <Link to={routes.CART}>
       <img

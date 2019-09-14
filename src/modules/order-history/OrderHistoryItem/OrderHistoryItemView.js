@@ -1,8 +1,11 @@
+// @flow
+
 import React from 'react';
 import Loader from '../../../components/Loader/Loader';
 import withModal from '../../../enhancers/withModal';
+import type { orderHistorySingleItemView } from '../../../configs/flowTypes/module/orderHistory';
 
-const OrderHistoryItemView = ({ singleOrder }) => {
+const OrderHistoryItemView = ({ singleOrder }: orderHistorySingleItemView) => {
   const { price, address } = singleOrder && singleOrder;
 
   return (
