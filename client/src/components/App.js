@@ -1,7 +1,11 @@
 // @flow
-import React, { Fragment, lazy, Suspense } from 'react';
+import React, { Fragment, lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { authOperations } from '../state/auth';
+
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import AppHeader from '../modules/header/AppHeaderContainer';
 import Loader from './Loader/Loader';
 
@@ -51,25 +55,50 @@ const AsyncSignIn = lazy(() =>
   import('../pages/SignIn' /* webpackChunkName: "sign-in-page" */),
 );
 
-const App = () => (
-  <Fragment>
-    <AppHeader />
-    <Switch>
-      <Suspense fallback={<Loader />}>
-        <Route exact path={routes.MENU} component={AsyncMenuPage} />
-        <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
-        <Route path={routes.ABOUT} component={AsyncAboutPage} />
-        <Route path={routes.CONTACT} component={AsyncContactPage} />
-        <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
-        <Route path={routes.ACCOUNT} component={AsyncAccountPage} />
-        <Route path={routes.ORDER_HISTORY} component={AsyncOrderHistoryPage} />
-        <Route path={routes.PLANNER} component={AsyncPlannerPage} />
-        <Route path={routes.CART} component={AsyncCartPage} />
-        <Route path={routes.SIGN_UP} component={AsyncSignUp} />
-        <Route path={routes.SIGN_IN} component={AsyncSignIn} />
-      </Suspense>
-    </Switch>
-  </Fragment>
-);
+class App extends Component {
+  componentDidMount() {
+    const { refreshUser } = this.props;
 
-export default App;
+    refreshUser();
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <AppHeader />
+        <Switch>
+          <Suspense fallback={<Loader />}>
+            <Route exact path={routes.MENU} component={AsyncMenuPage} />
+            <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
+            <Route path={routes.ABOUT} component={AsyncAboutPage} />
+            <Route path={routes.CONTACT} component={AsyncContactPage} />
+            <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
+            <ProtectedRoute
+              path={routes.ACCOUNT}
+              component={AsyncAccountPage}
+            />
+            <ProtectedRoute
+              path={routes.ORDER_HISTORY}
+              component={AsyncOrderHistoryPage}
+            />
+            <ProtectedRoute
+              path={routes.PLANNER}
+              component={AsyncPlannerPage}
+            />
+            <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
+            <Route path={routes.SIGN_UP} component={AsyncSignUp} />
+            <Route path={routes.SIGN_IN} component={AsyncSignIn} />
+          </Suspense>
+        </Switch>
+      </Fragment>
+    );
+  }
+}
+
+const mapDispatchToProps = {
+  refreshUser: authOperations.refreshUser,
+};
+export default connect(
+  null,
+  mapDispatchToProps,
+)(App);

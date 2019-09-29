@@ -13,4 +13,5 @@ export default Object.freeze({
   FAVOURITES: '/favourites',
   SIGN_UP: '/signup',
   SIGN_IN: '/signin',
+  DEFAULT: '/',
 });

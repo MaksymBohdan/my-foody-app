@@ -5,6 +5,7 @@ const user = (state = null, { type, payload }) => {
   switch (type) {
     case types.SIGN_UP_SUCCESS:
     case types.SIGN_IN_SUCCESS:
+    case types.REFRESH_CURRENT_USER_SUCCESS:
       return payload.user;
 
     case types.SIGN_OUT_SUCCESS:
@@ -19,6 +20,7 @@ const isAuthenticated = (state = false, { type }) => {
   switch (type) {
     case types.SIGN_UP_SUCCESS:
     case types.SIGN_IN_SUCCESS:
+    case types.REFRESH_CURRENT_USER_SUCCESS:
       return true;
 
     case types.SIGN_UP_FAILED:

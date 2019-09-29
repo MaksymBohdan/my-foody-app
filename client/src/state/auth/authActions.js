@@ -36,6 +36,15 @@ const signOutSuccess = () => ({
   type: types.SIGN_OUT_SUCCESS,
 });
 
+const refreshUserRequest = () => ({
+  type: types.REFRESH_CURRENT_USER_REQUEST,
+});
+
+const refreshUserSuccess = user => ({
+  type: types.REFRESH_CURRENT_USER_SUCCESS,
+  payload: user,
+});
+
 export default {
   signUpRequest,
   signUpSuccess,
@@ -45,4 +54,6 @@ export default {
   signInRequest,
   signInSuccess,
   signInFailed,
+  refreshUserRequest,
+  refreshUserSuccess,
 };
