@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment } from 'react';
-import type { PropsCategorySelector } from '../../configs/flowTypes/components';
+import type { PropsCategorySelector } from '../../types/components';
 
 const CategorySelector = ({
   options,

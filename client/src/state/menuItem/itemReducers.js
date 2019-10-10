@@ -2,20 +2,16 @@
 import { combineReducers } from 'redux';
 
 import types from './itemActionTypes';
-import type {
-  Entity,
-  StateLoading,
-  StateError,
-} from '../../configs/flowTypes/state/state';
+import type { Entity, StateLoading, StateError } from '../../types/state/state';
 import type {
   FetchSingleItemSuccessAction,
   ErrorAction,
   LoadingAction,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 import type {
   CombineReducersMenuItem,
   ReducerDefaultAction,
-} from '../../configs/flowTypes/state/reducer';
+} from '../../types/state/reducer';
 
 const menuItemReducer = (
   state: Entity = {},

@@ -24,3 +24,13 @@ export type PropsLogo = {
 type OptionNavItems = Array<{ name: string, path: string }>;
 
 export type PropsNavItems = { navItems: OptionNavItems };
+
+// SignIn
+export type StateSignIn = {
+  email: string,
+  password: string,
+};
+
+export type PropsSignIn = {
+  signIn: (state: StateSignIn) => void,
+};

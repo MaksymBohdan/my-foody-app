@@ -6,17 +6,17 @@ import type {
   StateLoading,
   StateError,
   Entities,
-} from '../../configs/flowTypes/state/state';
+} from '../../types/state/state';
 import type {
   FetchAllSuccessAction,
   LoadingAction,
   ErrorAction,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 import type {
   CombineReducersMenuAll,
   ReducerDefaultAction,
-} from '../../configs/flowTypes/state/reducer';
+} from '../../types/state/reducer';
 
 const menuReducers = (
   state: MenuItems = [],

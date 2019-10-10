@@ -7,7 +7,7 @@ import type {
   OrderHistory,
   PostOrderHistory,
   OrderHistoryFormState,
-} from '../configs/flowTypes/module/orderHistory';
+} from '../types/module/orderHistory';
 import { baseUrl, orderHistoryPath } from '../configs/services';
 
 axios.defaults.baseURL = baseUrl;

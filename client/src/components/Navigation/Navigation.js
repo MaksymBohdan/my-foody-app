@@ -3,7 +3,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import type { PropsNavItems } from '../../configs/flowTypes/components';
+import type { PropsNavItems } from '../../types/components';
 
 const Navigation = ({ navItems = [] }: PropsNavItems) => (
   <ul>

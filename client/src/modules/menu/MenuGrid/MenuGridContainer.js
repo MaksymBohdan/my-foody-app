@@ -20,7 +20,7 @@ import {
 import { cartActions } from '../../../state/cart';
 
 import InputSearch from '../../../components/InputSearch/InputSearch';
-import type { MenuGridContainerProps } from '../../../configs/flowTypes/module/menu';
+import type { MenuGridContainerProps } from '../../../types/module/menu';
 
 class MenuGridContainer extends Component<MenuGridContainerProps, {}> {
   componentDidMount() {

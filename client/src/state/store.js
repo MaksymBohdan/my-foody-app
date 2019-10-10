@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import rootReducer from '../state/rootReducer';
+import rootReducer from './rootReducer';
 
-import type { State } from '../configs/flowTypes/state/state';
+import type { State } from '../types/state/state';
 
 const cartPersistConfig = {
   key: 'cart',

@@ -1,14 +1,11 @@
 // @flow
 import { createSelector } from 'reselect';
 import { menuSelectors } from '../menuAll';
-import type {
-  ProductIds,
-  ProductAmount,
-} from '../../configs/flowTypes/state/state';
+import type { ProductIds, ProductAmount } from '../../types/state/state';
 import type {
   Selector,
   CartProductsSelectorType,
-} from '../../configs/flowTypes/state/selector';
+} from '../../types/state/selector';
 
 const getCartProductIds: Selector<ProductIds> = state => state.cart.ids;
 

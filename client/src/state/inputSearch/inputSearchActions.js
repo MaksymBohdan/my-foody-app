@@ -3,7 +3,7 @@ import types from './inputSearchActionTypes';
 import type {
   InputSearchPayload,
   InputSearchAction,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 const inputSearch = (text: InputSearchPayload): InputSearchAction => ({
   type: types.INPUT_SEARCH,

@@ -1,7 +1,7 @@
 // @flow
 import axios from 'axios';
 import type { AxiosPromise } from 'axios';
-import type { Entity } from '../configs/flowTypes/state/state';
+import type { Entity } from '../types/state/state';
 import { baseUrl, menuPath } from '../configs/services';
 
 axios.defaults.baseURL = baseUrl;

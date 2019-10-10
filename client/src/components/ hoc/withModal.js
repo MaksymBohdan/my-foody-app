@@ -2,7 +2,7 @@
 import React, { Component, createRef } from 'react';
 import type { AbstractComponent } from 'react';
 
-import s from '../modules/header/AppHeader.module.css';
+import s from '../../modules/header/AppHeader.module.css';
 
 const withModal = (WrappedComponent: AbstractComponent<*>) => {
   return class WithModal extends Component<*, {}> {

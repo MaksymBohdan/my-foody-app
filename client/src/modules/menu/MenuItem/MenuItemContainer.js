@@ -9,7 +9,7 @@ import MenuItemView from './MenuItemView';
 import Loader from '../../../components/Loader/Loader';
 import { menuItemOperations, menuItemSelectors } from '../../../state/menuItem';
 
-import type { MenuItemContainerProps } from '../../../configs/flowTypes/module/menuItem';
+import type { MenuItemContainerProps } from '../../../types/module/menuItem';
 
 class MenuItemContainer extends Component<MenuItemContainerProps, *> {
   componentDidMount() {

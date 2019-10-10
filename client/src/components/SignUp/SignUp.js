@@ -1,5 +1,16 @@
+// @flow
 import React, { Component } from 'react';
-import s from './SigningForms.module.css';
+import s from './SignUp.module.css';
+
+type StateSignUp = {
+  name: string,
+  email: string,
+  phone: string,
+  password: string,
+};
+type PropsSignIn = {
+  signUp: (state: StateSignUp) => void,
+};
 
 const INITIAL_STATE = {
   name: '',
@@ -8,19 +19,22 @@ const INITIAL_STATE = {
   password: '',
 };
 
-class SignUp extends Component {
+class SignUp extends Component<PropsSignIn, StateSignUp> {
   state = { ...INITIAL_STATE };
 
-  handleSubmit = e => {
+  handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const { signUp } = this.props;
+
     signUp(this.state);
+
     this.handleReset();
   };
 
-  handleChange = e => {
+  handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
 

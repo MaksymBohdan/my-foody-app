@@ -9,11 +9,8 @@ import categoryReducer from './categories/categoryReducers';
 import inputSearchReducers from './inputSearch/inputSearchReducers';
 import cartReducer from './cart/cartReducers';
 import authReducers from './auth/authReducers';
-import type { State } from '../configs/flowTypes/state/state';
-import type {
-  Reducer,
-  ReducerDefaultAction,
-} from '../configs/flowTypes/state/reducer';
+import type { State } from '../types/state/state';
+import type { Reducer, ReducerDefaultAction } from '../types/state/reducer';
 
 const tokenPersistConfig = {
   key: 'token',

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SignUp from '../components/others/authentication/SignUp';
+import SignUp from '../components/SignUp/SignUp';
 import { authOperations } from '../state/auth';
-import withAuth from '../enhancers/withAuth';
+import withAuth from '../components/ hoc/withAuth';
 
 const SignUnPage = ({ signUp }) => {
   return <SignUp signUp={signUp} />;

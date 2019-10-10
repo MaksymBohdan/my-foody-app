@@ -1,7 +1,7 @@
 // @flow
 import types from './inputSearchActionTypes';
-import type { InputSearchAction } from '../../configs/flowTypes/state/actions';
-import type { StateSearchValue } from '../../configs/flowTypes/state/state';
+import type { InputSearchAction } from '../../types/state/actions';
+import type { StateSearchValue } from '../../types/state/state';
 
 const inputSearchReducers = (
   state: StateSearchValue = '',

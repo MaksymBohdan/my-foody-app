@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authSelectors } from '../state/auth';
-import routes from '../configs/routes';
+import { authSelectors } from '../../state/auth';
+import routes from '../../configs/routes';
 
 const withAuth = WrappedComponent => {
   class WithAuth extends Component {

@@ -5,10 +5,7 @@ import actions from './menuActions';
 import * as API from '../../services/menuService';
 import menuSchema from '../../services/schemas/menuSchema';
 
-import type {
-  Dispatch,
-  ThunkAction,
-} from '../../configs/flowTypes/state/operations';
+import type { Dispatch, ThunkAction } from '../../types/state/operations';
 
 const fetchMenuItemByCategory = (category: ?string): ThunkAction => async (
   dispatch: Dispatch,

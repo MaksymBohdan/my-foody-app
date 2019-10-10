@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../../configs/routes';
-import type { CartIconProps } from '../../../configs/flowTypes/module/cart';
+import type { CartIconProps } from '../../../types/module/cart';
 
 const CartIcon = ({ amount }: CartIconProps) => (
   <div>

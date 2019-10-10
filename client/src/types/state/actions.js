@@ -54,11 +54,12 @@ export type FetchAllSuccessAction = {
 };
 
 // MenuItem
-
 export type FetchSingleItemRequestAction = {
   type: string,
 };
+
 export type FetchSingleItemSuccessPayload = Entity;
+
 export type FetchSingleItemSuccessAction = {
   type: string,
   payload: FetchSingleItemSuccessPayload,

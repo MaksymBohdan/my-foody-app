@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { orederHistoryGridViewProps } from '../../../configs/flowTypes/module/orderHistory';
+import type { orederHistoryGridViewProps } from '../../../types/module/orderHistory';
 
 const OrderHistory = ({
   ordersHistory,

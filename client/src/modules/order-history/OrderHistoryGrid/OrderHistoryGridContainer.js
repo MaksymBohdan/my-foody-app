@@ -11,7 +11,7 @@ import * as API from '../../../services/orderHistoryService';
 import type {
   OrderHistoryFormState,
   OrderHistoryGridContainerState,
-} from '../../../configs/flowTypes/module/orderHistory';
+} from '../../../types/module/orderHistory';
 
 class OrderHistoryContainer extends Component<
   {},
