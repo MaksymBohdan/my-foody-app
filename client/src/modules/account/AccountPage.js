@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import AccountContainer from '../modules/account/AccountContainer';
+import AccountContainer from './AccountContainer';
 
 const AccountPage = () => {
   return (

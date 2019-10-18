@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import CartContainer from '../modules/cart/CartContainer';
+import CartContainer from './CartContainer';
 
 const Cart = () => {
   return <CartContainer />;

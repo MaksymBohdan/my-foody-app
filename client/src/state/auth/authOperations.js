@@ -1,49 +1,66 @@
-import axios from 'axios';
+// @flow
 import actions from './authActions';
-import { authSelectors } from '.';
+import selectors from './authSelectors';
+import {
+  setAuthHeader,
+  clearAuthHeader,
+  createNewAccount,
+  signInRequest,
+  signOutRequest,
+  refreshUserRequest,
+} from '../../services/authService';
 
-const axiosAuth = axios.create({
-  baseURL: 'http://localhost:4040',
-});
+import type {
+  Dispatch,
+  ThunkAction,
+  GetState,
+} from '../../types/state/operations';
+import type {
+  SignUpCredentials,
+  SignInCredentials,
+} from '../../types/state/actions';
 
-const setAuthHeader = token => {
-  axiosAuth.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axiosAuth.defaults.headers.common.Authorization = null;
-};
-
-const signUp = credentials => async dispatch => {
+const signUp = (credentials: SignUpCredentials): ThunkAction => async (
+  dispatch: Dispatch,
+) => {
   dispatch(actions.signUpRequest());
-  try {
-    const response = await axiosAuth.post(`/auth/signup`, credentials);
-    setAuthHeader(response.data.token);
 
-    await dispatch(actions.signUpSuccess(response.data));
+  try {
+    const response = await createNewAccount(credentials);
+
+    setAuthHeader(response.token);
+
+    await dispatch(actions.signUpSuccess(response));
   } catch (error) {
     clearAuthHeader();
+
     dispatch(actions.signUpFailed(error));
   }
 };
 
-const signIn = credentials => async dispatch => {
+const signIn = (credentials: SignInCredentials): ThunkAction => async (
+  dispatch: Dispatch,
+) => {
   dispatch(actions.signInRequest());
-  try {
-    const response = await axiosAuth.post('/auth/signin', credentials);
-    setAuthHeader(response.data.token);
 
-    await dispatch(actions.signInSuccess(response.data));
+  try {
+    const response = await signInRequest(credentials);
+
+    setAuthHeader(response.token);
+
+    await dispatch(actions.signInSuccess(response));
   } catch (error) {
     clearAuthHeader();
+
     dispatch(actions.signInFailed(error));
   }
 };
 
-const signOut = () => async dispatch => {
+const signOut = () => async (dispatch: Dispatch) => {
   dispatch(actions.signOutRequest());
+
   try {
-    await axiosAuth.post('/auth/signout');
+    await signOutRequest();
 
     clearAuthHeader();
 
@@ -54,18 +71,19 @@ const signOut = () => async dispatch => {
   }
 };
 
-const refreshUser = () => async (dispatch, getState) => {
+const refreshUser = () => async (dispatch: Dispatch, getState: GetState) => {
   dispatch(actions.refreshUserRequest());
+
   try {
-    const token = authSelectors.getToken(getState());
+    const token = selectors.getToken(getState());
 
     if (!token) return;
 
     setAuthHeader(token);
 
-    const { data } = await axiosAuth.get('/auth/current');
+    const response = await refreshUserRequest();
 
-    await dispatch(actions.refreshUserSuccess(data));
+    await dispatch(actions.refreshUserSuccess(response));
   } catch (error) {
     clearAuthHeader();
     // eslint-disable-next-line no-console

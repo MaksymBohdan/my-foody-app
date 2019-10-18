@@ -5,13 +5,11 @@ import OrderHistoryView from './OrderHistoryGridView';
 import Loader from '../../../components/Loader/Loader';
 import OrderHistoryItemView from '../OrderHistoryItem/OrderHistoryItemView';
 import OrderHistoryForm from '../OrderHistoryForm/OrderHistoryForm';
-
-import * as API from '../../../services/orderHistoryService';
-
 import type {
   OrderHistoryFormState,
   OrderHistoryGridContainerState,
 } from '../../../types/module/orderHistory';
+import * as API from '../../../services/orderHistoryService';
 
 class OrderHistoryContainer extends Component<
   {},
@@ -30,6 +28,7 @@ class OrderHistoryContainer extends Component<
 
     try {
       const ordersHistory = await API.getAllOrdersHistory();
+
       this.setState({ ordersHistory, loading: false });
     } catch (error) {
       this.setState({ error, loading: false });

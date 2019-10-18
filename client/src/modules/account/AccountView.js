@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import passProps from '../../components/ hoc/passProps';
+import passProps from '../../components/ Hoc/passProps';
 import type { AccountViewProps } from '../../types/module/account';
 
 const AccountView = ({ image, name, phone, mail }: AccountViewProps) => (

@@ -1,16 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import s from './SignUp.module.css';
 
-type StateSignUp = {
-  name: string,
-  email: string,
-  phone: string,
-  password: string,
-};
-type PropsSignIn = {
-  signUp: (state: StateSignUp) => void,
-};
+import s from './SignUp.module.css';
+import type { SignUpState, SignUpProps } from '../../types/components';
 
 const INITIAL_STATE = {
   name: '',
@@ -19,7 +11,7 @@ const INITIAL_STATE = {
   password: '',
 };
 
-class SignUp extends Component<PropsSignIn, StateSignUp> {
+class SignUp extends Component<SignUpProps, SignUpState> {
   state = { ...INITIAL_STATE };
 
   handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {

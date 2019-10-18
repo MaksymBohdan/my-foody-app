@@ -1,10 +1,15 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import type { AbstractComponent } from 'react';
+
 import { authSelectors } from '../../state/auth';
 import routes from '../../configs/routes';
 
-const withAuth = WrappedComponent => {
-  class WithAuth extends Component {
+import type { WithAuthProps } from '../../types/components';
+
+const withAuth = (WrappedComponent: AbstractComponent<*>) => {
+  class WithAuth extends Component<WithAuthProps> {
     componentDidMount() {
       this.checkAuth();
     }
@@ -17,7 +22,7 @@ const withAuth = WrappedComponent => {
       const { isAuthenticated, location, history } = this.props;
       if (isAuthenticated) {
         const { from } = location.state || {
-          from: { pathname: routes.DEFAULT },
+          from: { pathname: routes.MENU },
         };
 
         history.push(from);
@@ -33,7 +38,7 @@ const withAuth = WrappedComponent => {
     isAuthenticated: authSelectors.isAuthenticated(state),
   });
 
-  return connect(mapStateToProps)(WithAuth);
+  return connect<WithAuthProps, *, *, *, *, *>(mapStateToProps)(WithAuth);
 };
 
 export default withAuth;

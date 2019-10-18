@@ -19,7 +19,7 @@ export type Action =
   | FetchSingleItemRequestAction
   | FetchSingleItemSuccessAction;
 
-type GetState = () => State;
+export type GetState = () => State;
 type PromiseAction = Promise<Action>;
 // eslint-disable-next-line no-use-before-define
 export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;

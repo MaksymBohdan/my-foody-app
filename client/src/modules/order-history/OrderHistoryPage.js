@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import OrderHistoryContainer from '../modules/order-history/OrderHistoryGrid/OrderHistoryGridContainer';
+import OrderHistoryContainer from './OrderHistoryGrid/OrderHistoryGridContainer';
 
 const OrderHistoryPage = () => (
   <React.Fragment>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Loader from '../../../components/Loader/Loader';
-import withModal from '../../../components/ hoc/withModal';
+import withModal from '../../../components/ Hoc/withModal';
 import type { orderHistorySingleItemView } from '../../../types/module/orderHistory';
 
 const OrderHistoryItemView = ({ singleOrder }: orderHistorySingleItemView) => {

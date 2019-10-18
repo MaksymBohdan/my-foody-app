@@ -1,7 +1,10 @@
+// @flow
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const AuthNavigation = ({ authItems = [] }) => (
+import type { AuthNavigationP } from '../../types/components';
+
+const AuthNavigation = ({ authItems = [] }: { authItems: AuthNavigationP }) => (
   <ul>
     {authItems.map(item => (
       <li key={item.name}>

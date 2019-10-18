@@ -1,8 +1,10 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
-import SignUp from '../components/SignUp/SignUp';
-import { authOperations } from '../state/auth';
-import withAuth from '../components/ hoc/withAuth';
+import SignUp from '../../components/SignUp/SignUp';
+import { authOperations } from '../../state/auth';
+import withAuth from '../../components/ Hoc/withAuth';
 
 const SignUnPage = ({ signUp }) => {
   return <SignUp signUp={signUp} />;

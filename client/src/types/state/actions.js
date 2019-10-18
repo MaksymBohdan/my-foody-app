@@ -64,3 +64,22 @@ export type FetchSingleItemSuccessAction = {
   type: string,
   payload: FetchSingleItemSuccessPayload,
 };
+
+// auth
+export type SignUpCredentials = {
+  name: string,
+  email: string,
+  phone: string,
+  password: string,
+};
+
+export type SignInCredentials = {
+  email: string,
+  password: string,
+};
+
+export type User = {
+  id: string,
+  name: string,
+  email: string,
+};

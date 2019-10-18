@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import MenuGridContainer from '../modules/menu/MenuGrid/MenuGridContainer';
+import MenuGridContainer from './MenuGridContainer';
 
 const MenuPage = () => (
   <React.Fragment>

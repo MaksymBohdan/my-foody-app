@@ -46,3 +46,9 @@ export type CombineReducersMenuItem = {
   loading: Reducer<StateLoading, LoadingAction>,
   error: Reducer<StateError, ErrorAction>,
 };
+
+export type CombineReducersAuth = {
+  user?: Reducer<null | Entity, *>,
+  isAuthenticated: Reducer<boolean, *>,
+  token: Reducer<null | string, *>,
+};

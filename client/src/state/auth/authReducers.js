@@ -1,5 +1,7 @@
+// @flow
 import { combineReducers } from 'redux';
 import types from './authActionTypes';
+import type { CombineReducersAuth } from '../../types/state/reducer';
 
 const user = (state = null, { type, payload }) => {
   switch (type) {
@@ -49,7 +51,7 @@ const token = (state = null, { type, payload }) => {
   }
 };
 
-export default combineReducers({
+export default combineReducers<CombineReducersAuth, *>({
   user,
   isAuthenticated,
   token,

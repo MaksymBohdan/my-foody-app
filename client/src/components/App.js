@@ -2,60 +2,63 @@
 import React, { Fragment, lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import { authOperations } from '../state/auth';
+import type { AppProps } from '../types/components';
 
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import AppHeader from '../modules/header/AppHeaderContainer';
 import Loader from './Loader/Loader';
-
+import { authOperations } from '../state/auth';
 import routes from '../configs/routes';
 
 const AsyncMenuPage = lazy(() =>
-  import('../pages/Menu' /* webpackChunkName: "menu-page" */),
+  import(
+    '../modules/menu/MenuGrid/MenuGridPage' /* webpackChunkName: "menu-page" */
+  ),
 );
-
 const AsyncMenuItemPage = lazy(() =>
-  import('../pages/MenuItem' /* webpackChunkName: "menu-item-page" */),
+  import(
+    '../modules/menu/MenuItem/MenuItemPage' /* webpackChunkName: "menu-item-page" */
+  ),
 );
-
 const AsyncAboutPage = lazy(() =>
-  import('../pages/About' /* webpackChunkName: "about-page" */),
+  import('../modules/about/AboutPage' /* webpackChunkName: "about-page" */),
 );
-
 const AsyncContactPage = lazy(() =>
-  import('../pages/Contact' /* webpackChunkName: "contact-page" */),
+  import(
+    '../modules/contact/ContactPage' /* webpackChunkName: "contact-page" */
+  ),
 );
-
 const AsyncDeliveryPage = lazy(() =>
-  import('../pages/Delivery' /* webpackChunkName: "delivery-page" */),
+  import(
+    '../modules/delivery/DeliveryPage' /* webpackChunkName: "delivery-page" */
+  ),
 );
-
 const AsyncAccountPage = lazy(() =>
-  import('../pages/Account' /* webpackChunkName: "account-page" */),
+  import(
+    '../modules/account/AccountPage' /* webpackChunkName: "account-page" */
+  ),
 );
-
 const AsyncOrderHistoryPage = lazy(() =>
-  import('../pages/OrderHistory' /* webpackChunkName: "order-history-page" */),
+  import(
+    '../modules/order-history/OrderHistoryPage' /* webpackChunkName: "order-history-page" */
+  ),
 );
-
 const AsyncPlannerPage = lazy(() =>
-  import('../pages/Planner' /* webpackChunkName: "planner-page" */),
+  import(
+    '../modules/planner/PlannerPage' /* webpackChunkName: "planner-page" */
+  ),
 );
-
 const AsyncCartPage = lazy(() =>
-  import('../pages/Cart' /* webpackChunkName: "cart-page" */),
+  import('../modules/cart/CartPage' /* webpackChunkName: "cart-page" */),
 );
-
 const AsyncSignUp = lazy(() =>
-  import('../pages/SignUp' /* webpackChunkName: "sign-up-page" */),
+  import('../modules/signUp/SignUpPage' /* webpackChunkName: "sign-up-page" */),
 );
-
 const AsyncSignIn = lazy(() =>
-  import('../pages/SignIn' /* webpackChunkName: "sign-in-page" */),
+  import('../modules/signIn/SignInPage' /* webpackChunkName: "sign-in-page" */),
 );
 
-class App extends Component {
+class App extends Component<AppProps> {
   componentDidMount() {
     const { refreshUser } = this.props;
 
@@ -98,7 +101,8 @@ class App extends Component {
 const mapDispatchToProps = {
   refreshUser: authOperations.refreshUser,
 };
-export default connect(
+
+export default connect<AppProps, *, *, *, *, *>(
   null,
   mapDispatchToProps,
 )(App);

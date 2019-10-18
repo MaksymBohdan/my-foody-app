@@ -6,4 +6,5 @@ export type UserMenuState = {
 export type UserMenuProps = {
   avatar: string,
   name: string,
+  signOut: () => void,
 };

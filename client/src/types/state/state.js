@@ -64,6 +64,23 @@ type StateMenuItem = {
 
 export type StateSearchValue = string;
 
+// Auth
+
+export type Token = string;
+export type IsAuthenticated = string;
+export type User = {
+  id: string,
+  name: string,
+  email: string,
+  password: string,
+};
+
+type StateAuth = {
+  token: Token,
+  isAuthenticated: IsAuthenticated,
+  user: User,
+};
+
 // State
 export type State = {
   cart: StateCart,
@@ -72,4 +89,5 @@ export type State = {
   menu: StateMenu,
   menuItem: StateMenuItem,
   searchValue: StateSearchValue,
+  auth: StateAuth,
 };

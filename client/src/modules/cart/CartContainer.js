@@ -37,7 +37,7 @@ const mapDispatchToProps = {
   fetchMenuItems: menuOperations.fetchMenuItemByCategory,
 };
 
-export default connect<CartContainerProps, {}, _, _, _, _>(
+export default connect<CartContainerProps, {}, *, *, *, *>(
   mapStateToProps,
   mapDispatchToProps,
 )(CartContainer);
