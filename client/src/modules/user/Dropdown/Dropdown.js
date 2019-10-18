@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 import userNavItems from '../../../configs/user-nav';
 
+import type { DropdownProps } from '../../../types/components';
 import s from '../../header/AppHeader.module.css';
 
-const Dropdown = ({ signOut }) => {
+const Dropdown = ({ signOut }: DropdownProps) => {
   return (
     <div className={s.Dropdown}>
       <ul>

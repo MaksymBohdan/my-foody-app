@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { menuItemViewProps } from '../../../configs/flowTypes/module/menuItem';
+import type { menuItemViewProps } from '../../../types/module/menuItem';
 
 const MenuItemView = ({ id, menuItem, handleGoBack }: menuItemViewProps) => (
   <React.Fragment>

@@ -1,6 +1,6 @@
 // @flow
 import types from './cartActionTypes';
-import type { CartAction } from '../../configs/flowTypes/state/actions';
+import type { CartAction } from '../../types/state/actions';
 
 const addToCart = (id: number): CartAction => ({
   type: types.ADD_TO_CART,

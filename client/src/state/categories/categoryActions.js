@@ -6,7 +6,7 @@ import type {
   CategoryFetchSuccessAction,
   Category,
   ErrorPayload,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 const fetchCategoriesRequest = (): CategoryRequestAction => ({
   type: types.FETCH_REQUEST,

@@ -1,7 +1,7 @@
 // @flow
 import axios from 'axios';
 import type { AxiosPromise } from 'axios';
-import type { CategoryItems } from '../configs/flowTypes/state/state';
+import type { CategoryItems } from '../types/state/state';
 
 import { baseUrl, menuCategoriesPath } from '../configs/services';
 

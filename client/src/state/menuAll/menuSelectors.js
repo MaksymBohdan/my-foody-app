@@ -1,14 +1,14 @@
 // @flow
 import { createSelector } from 'reselect';
 import { inputSearchSelectors } from '../inputSearch/index';
-import type { Selector } from '../../configs/flowTypes/state/selector';
+import type { Selector } from '../../types/state/selector';
 import type {
   MenuItems,
   Entities,
   Entity,
   StateLoading,
   StateError,
-} from '../../configs/flowTypes/state/state';
+} from '../../types/state/state';
 
 const menuItems: Selector<MenuItems> = state => state.menu.items;
 

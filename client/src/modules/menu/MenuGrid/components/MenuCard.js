@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { Entity } from '../../../../configs/flowTypes/state/state';
+import type { Entity } from '../../../../types/state/state';
 
 const MenuCard = ({ name, image, price }: Entity) => (
   <div>

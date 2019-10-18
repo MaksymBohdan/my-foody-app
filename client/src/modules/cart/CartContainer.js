@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CartView from './CartView';
 import { cartActions, cartSelectors } from '../../state/cart';
 import { menuOperations } from '../../state/menuAll';
-import type { CartContainerProps } from '../../configs/flowTypes/module/cart';
+import type { CartContainerProps } from '../../types/module/cart';
 
 class CartContainer extends Component<CartContainerProps, {}> {
   componentDidMount() {
@@ -37,7 +37,7 @@ const mapDispatchToProps = {
   fetchMenuItems: menuOperations.fetchMenuItemByCategory,
 };
 
-export default connect<CartContainerProps, {}, _, _, _, _>(
+export default connect<CartContainerProps, {}, *, *, *, *>(
   mapStateToProps,
   mapDispatchToProps,
 )(CartContainer);

@@ -6,7 +6,7 @@ import type {
   FetchAllSuccessAction,
   ErrorAction,
   ErrorPayload,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 const fetchAllRequest = (): FetchAllRequestAction => ({
   type: types.FETCH_ALL_REQUEST,

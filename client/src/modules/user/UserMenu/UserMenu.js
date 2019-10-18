@@ -3,10 +3,7 @@ import React, { Component, createRef } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Avatar from '../Avatar/Avatar';
 import s from '../../header/AppHeader.module.css';
-import type {
-  UserMenuProps,
-  UserMenuState,
-} from '../../../configs/flowTypes/module/user';
+import type { UserMenuProps, UserMenuState } from '../../../types/module/user';
 
 class UserMenu extends Component<UserMenuProps, UserMenuState> {
   containerRef: any = createRef<HTMLElement>();

@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import type {
   OrderHistoryFormProps,
   OrderHistoryFormState,
-} from '../../../configs/flowTypes/module/orderHistory';
+} from '../../../types/module/orderHistory';
 
 class OrderHistoryForm extends Component<
   OrderHistoryFormProps,

@@ -5,6 +5,7 @@
 [include]
 
 [libs]
+<PROJECT_ROOT>/type-def-libs/.*
 
 [lints]
 deprecated-utility=off

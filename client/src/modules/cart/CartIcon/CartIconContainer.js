@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import CartIconView from './CartIconView';
 import { cartSelectors } from '../../../state/cart';
-import type { CartIconProps } from '../../../configs/flowTypes/module/cart';
+import type { CartIconProps } from '../../../types/module/cart';
 
 const mapState = state => ({
   amount: cartSelectors.getCartProductsAmount(state),

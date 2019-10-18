@@ -6,7 +6,7 @@ import type {
   FetchSingleItemSuccessAction,
   ErrorPayload,
   ErrorAction,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 const fetchSingleItemRequest = (): FetchSingleItemRequestAction => ({
   type: types.FETCH_SINGLE_ITEM_REQUEST,

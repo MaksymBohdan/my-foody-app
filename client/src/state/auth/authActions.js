@@ -1,15 +1,22 @@
+// @flow
 import types from './authActionTypes';
+import type {
+  ErrorPayload,
+  SignUpCredentials,
+  SignInCredentials,
+  User,
+} from '../../types/state/actions';
 
 const signUpRequest = () => ({
   type: types.SIGN_UP_REQUEST,
 });
 
-const signUpSuccess = credentials => ({
+const signUpSuccess = (credentials: SignUpCredentials) => ({
   type: types.SIGN_UP_SUCCESS,
   payload: credentials,
 });
 
-const signUpFailed = error => ({
+const signUpFailed = (error: ErrorPayload) => ({
   type: types.SIGN_UP_FAILED,
   payload: error,
 });
@@ -18,12 +25,12 @@ const signInRequest = () => ({
   type: types.SIGN_IN_REQUEST,
 });
 
-const signInSuccess = credentials => ({
+const signInSuccess = (credentials: SignInCredentials) => ({
   type: types.SIGN_IN_SUCCESS,
   payload: credentials,
 });
 
-const signInFailed = error => ({
+const signInFailed = (error: ErrorPayload) => ({
   type: types.SIGN_IN_FAILED,
   payload: error,
 });
@@ -40,7 +47,7 @@ const refreshUserRequest = () => ({
   type: types.REFRESH_CURRENT_USER_REQUEST,
 });
 
-const refreshUserSuccess = user => ({
+const refreshUserSuccess = (user: User) => ({
   type: types.REFRESH_CURRENT_USER_SUCCESS,
   payload: user,
 });

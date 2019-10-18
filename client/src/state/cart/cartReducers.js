@@ -1,11 +1,8 @@
 // @flow
 import { combineReducers } from 'redux';
-import type { CartAction } from '../../configs/flowTypes/state/actions';
-import type {
-  ProductIds,
-  ProductAmount,
-} from '../../configs/flowTypes/state/state';
-import type { CombineReducersState } from '../../configs/flowTypes/state/reducer';
+import type { CartAction } from '../../types/state/actions';
+import type { ProductIds, ProductAmount } from '../../types/state/state';
+import type { CombineReducersState } from '../../types/state/reducer';
 import types from './cartActionTypes';
 
 const cartIdsReducer = (

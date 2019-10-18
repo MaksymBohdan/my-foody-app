@@ -1,6 +1,6 @@
 // @flow
-import type { StateSearchValue } from '../../configs/flowTypes/state/state';
-import type { Selector } from '../../configs/flowTypes/state/selector';
+import type { StateSearchValue } from '../../types/state/state';
+import type { Selector } from '../../types/state/selector';
 
 const getSearchValue: Selector<StateSearchValue> = state => state.searchValue;
 

@@ -5,17 +5,17 @@ import type {
   CategoryItems,
   StateLoading,
   StateError,
-} from '../../configs/flowTypes/state/state';
+} from '../../types/state/state';
 import type {
   CategoryFetchSuccessAction,
   LoadingAction,
   ErrorAction,
-} from '../../configs/flowTypes/state/actions';
+} from '../../types/state/actions';
 
 import type {
   CombineReducersCategory,
   ReducerDefaultAction,
-} from '../../configs/flowTypes/state/reducer';
+} from '../../types/state/reducer';
 
 const categoryReducer = (
   state: CategoryItems = [],

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { MenuGridViewProps } from '../../../configs/flowTypes/module/menu';
+import type { MenuGridViewProps } from '../../../types/module/menu';
 
 import MenuCard from './components/MenuCard';
 

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { CartViewProps } from '../../configs/flowTypes/module/cart';
+import type { CartViewProps } from '../../types/module/cart';
 
 const CartView = ({
   products = [],

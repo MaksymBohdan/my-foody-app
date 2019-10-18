@@ -5,16 +5,16 @@ import Logo from '../../components/Logo/Logo';
 import Navigation from '../../components/Navigation/Navigation';
 import UserMenu from '../user/UserMenu/UserMenu';
 import Cart from '../cart/CartIcon/CartIconContainer';
-
+import AuthNavigation from '../../components/AuthNavigation/AuthNavigation';
 import navItems from '../../configs/main-nav';
 import authItems from '../../configs/auth-nav';
-import logo from '../../img/logo.png';
-import avatar from '../../img/portrait.jpg';
+import logo from '../../assets/img/logo.png';
+import avatar from '../../assets/img/portrait.jpg';
 
+import type { AppHeaderProps } from '../../types/components';
 import s from './AppHeader.module.css';
-import AuthNavigation from '../../components/AuthNavigation/AuthNavigation';
 
-const HeadComponent = ({ isAuthenticated, user, signOut }) => (
+const HeadComponent = ({ isAuthenticated, user, signOut }: AppHeaderProps) => (
   <header className={s.Header}>
     <div className={s.Header__logo}>
       <Logo image={logo} width="100" height="100" />

@@ -4,9 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+
 import MenuGrid from './MenuGridView';
 import Loader from '../../../components/Loader/Loader';
 import CategorySelector from '../../../components/CategorySelector/CategorySelector';
+import InputSearch from '../../../components/InputSearch/InputSearch';
 
 import { menuOperations, menuSelectors } from '../../../state/menuAll';
 import {
@@ -19,8 +21,7 @@ import {
 } from '../../../state/inputSearch';
 import { cartActions } from '../../../state/cart';
 
-import InputSearch from '../../../components/InputSearch/InputSearch';
-import type { MenuGridContainerProps } from '../../../configs/flowTypes/module/menu';
+import type { MenuGridContainerProps } from '../../../types/module/menu';
 
 class MenuGridContainer extends Component<MenuGridContainerProps, {}> {
   componentDidMount() {
